@@ -13,8 +13,6 @@
 
 - 📫 How to reach me: *kenjivafe@gmail.com*
 
-- 📄 Know about my experiences [https://www.linkedin.com/in/kenji-von-ashley/?profileId=ACoAADykRyABp9bbQquo4rbNhYLzwg3fRA9Mf6s](https://www.linkedin.com/in/kenji-von-ashley/?profileId=ACoAADykRyABp9bbQquo4rbNhYLzwg3fRA9Mf6s)
-
 - ⚡ Hobby *Bodybuilding*
 
 <h3 align="left">Connect with me:</h3>
