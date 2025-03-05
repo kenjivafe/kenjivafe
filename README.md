@@ -5,15 +5,9 @@
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=kenjivafe" alt="kenjivafe" /></a> </p>
 
-- 🔭 I’m currently working on *an Administrative Services Integrated System*
- 
-- and *a Human Resource Management System*
+- 🔭 I’m currently working on an Administrative Services Integrated System and a Human Resource Management System
 
 - 🌱 I’m currently learning *Laravel 12 with React 19, Typescript, Inertia V2, and shadcn UI*
-
-- 👨‍💻 All of my projects are available at [Under Development](Under Development)
-
-- 📝 I regularly write articles on [Under Development](Under Development)
 
 - 💬 Ask me about *Laravel, and filamentphp*
 
