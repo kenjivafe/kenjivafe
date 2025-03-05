@@ -40,7 +40,7 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg" alt="laravel" width="40" height="40"/> 
   </a>
   <a href="https://filamentphp.com/">
-    <img src=https://avatars.githubusercontent.com/u/64450473?s=200&v=4"/>
+    <img src="https://avatars.githubusercontent.com/u/64450473?s=200&v=4" alt="filament" width="40" height="40"/>
   </a>
   <br>
   <a href="https://reactjs.org/" target="_blank" rel="noreferrer"> 
@@ -69,4 +69,4 @@
 
 <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=kenjivafe&show_icons=true&locale=en&layout=compact" alt="kenjivafe" /></p>
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=kenjivafe&show_icons=true&locale=en" alt="kenjivafe" style="width: 100px"/></p>
+<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=kenjivafe&show_icons=true&locale=en" alt="kenjivafe" style="width: 400"/></p>
