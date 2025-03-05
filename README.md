@@ -70,7 +70,7 @@
   </p>
   </div>
 
-  <div class="flex flex-col>
+  <div>
   <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=kenjivafe&show_icons=true&locale=en&layout=compact" alt="kenjivafe" /></p>
   <br>
   <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=kenjivafe&show_icons=true&locale=en" alt="kenjivafe" style="width: 400"/></p>
