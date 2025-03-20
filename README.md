@@ -3,7 +3,7 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=kenjivafe&label=Profile%20views&color=0e75b6&style=flat" alt="kenjivafe" /> </p>
 
-- 🔭 I’m currently working on an Administrative Services Integrated System and a Human Resource Management System
+- 🔭 I’m currently working on an Administrative Services Integrated System, a Human Resource Management System, and a Dental Clinic Appointment System
 
 - 🌱 I’m currently learning *Laravel 12 with React 19, Typescript, Inertia V2, and shadcn UI*
 
