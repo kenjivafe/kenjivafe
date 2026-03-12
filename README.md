@@ -1,5 +1,5 @@
 <h1 align="center">Kenji Von Ashley</h1>
-<h3 align="center">Founder @ Northernware • Full Stack Engineer • Cybersecurity Practitioner</h3>
+<h3 align="center">Founder @ Northernware & Grit Digital Performance • Full Stack Engineer • Cybersecurity Practitioner</h3>
 
 <p align="center">
 Building scalable, intelligent systems from North Luzon 🇵🇭
