@@ -26,7 +26,7 @@
 </p>
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/experience-m-light.svg?v=0f275861" /><source media="(prefers-color-scheme: light)" srcset="./assets/experience-light.svg?v=9bd1736f" /><source media="(max-width: 600px)" srcset="./assets/experience-m-dark.svg?v=81981ddd" /><img src="./assets/experience-dark.svg?v=8869a11d" width="100%" alt="Experience" /></picture>
+  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/experience-m-light.svg?v=5a4778dd" /><source media="(prefers-color-scheme: light)" srcset="./assets/experience-light.svg?v=ced36cb6" /><source media="(max-width: 600px)" srcset="./assets/experience-m-dark.svg?v=7c1d6e17" /><img src="./assets/experience-dark.svg?v=9db88a16" width="100%" alt="Experience" /></picture>
 </p>
 
 <p align="center">
@@ -34,7 +34,7 @@
 </p>
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/activity-m-light.svg?v=612ae982" /><source media="(prefers-color-scheme: light)" srcset="./assets/activity-light.svg?v=c211361c" /><source media="(max-width: 600px)" srcset="./assets/activity-m-dark.svg?v=86e547ca" /><img src="./assets/activity-dark.svg?v=be229dec" width="100%" alt="GitHub activity" /></picture>
+  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/activity-m-light.svg?v=2ffa0fdd" /><source media="(prefers-color-scheme: light)" srcset="./assets/activity-light.svg?v=dd3fe4c7" /><source media="(max-width: 600px)" srcset="./assets/activity-m-dark.svg?v=fadc6464" /><img src="./assets/activity-dark.svg?v=da7e8d72" width="100%" alt="GitHub activity" /></picture>
 </p>
 
 <p align="center">
