@@ -17,7 +17,7 @@
 <text x="76" y="38" class="name">Gymcentrix</text>
 <text x="76" y="58" class="desc">Enterprise Gym Management &amp; Analytics Platform</text>
 <line x1="420" y1="0" x2="420" y2="84" stroke="#30302b"/>
-<rect x="440.5" y="32.5" width="38" height="19" fill="none" stroke="#30302b"/><text x="459" y="45.5" class="tag" text-anchor="middle">SAAS</text><rect x="482.5" y="32.5" width="73" height="19" fill="none" stroke="#30302b"/><text x="518.5" y="45.5" class="tag" text-anchor="middle">POSTGRESQL</text><rect x="559.5" y="32.5" width="67" height="19" fill="none" stroke="#30302b"/><text x="592.5" y="45.5" class="tag" text-anchor="middle">REAL-TIME</text>
+<rect x="440.5" y="32.5" width="40" height="19" fill="none" stroke="#30302b"/><text x="460" y="45.5" class="tag" text-anchor="middle">SAAS</text><rect x="484.5" y="32.5" width="77" height="19" fill="none" stroke="#30302b"/><text x="522.5" y="45.5" class="tag" text-anchor="middle">POSTGRESQL</text><rect x="565.5" y="32.5" width="71" height="19" fill="none" stroke="#30302b"/><text x="600.5" y="45.5" class="tag" text-anchor="middle">REAL-TIME</text>
 <text x="750" y="46" class="yr" text-anchor="end">2026</text>
 <line x1="770" y1="0" x2="770" y2="84" stroke="#30302b"/>
 <path d="M794 48 l12 -12 M797 36 h9 v9" fill="none" stroke="#ff3800" stroke-width="1.6"/>

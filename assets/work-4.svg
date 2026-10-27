@@ -17,7 +17,7 @@
 <text x="76" y="38" class="name">RESQ-Link</text>
 <text x="76" y="58" class="desc">Real-time Emergency Dispatch &amp; Event Response</text>
 <line x1="420" y1="0" x2="420" y2="84" stroke="#30302b"/>
-<rect x="440.5" y="32.5" width="67" height="19" fill="none" stroke="#30302b"/><text x="473.5" y="45.5" class="tag" text-anchor="middle">REAL-TIME</text><rect x="511.5" y="32.5" width="85" height="19" fill="none" stroke="#30302b"/><text x="553.5" y="45.5" class="tag" text-anchor="middle">EVENT-DRIVEN</text><rect x="600.5" y="32.5" width="56" height="19" fill="none" stroke="#30302b"/><text x="628" y="45.5" class="tag" text-anchor="middle">MAPPING</text>
+<rect x="440.5" y="32.5" width="71" height="19" fill="none" stroke="#30302b"/><text x="475.5" y="45.5" class="tag" text-anchor="middle">REAL-TIME</text><rect x="515.5" y="32.5" width="89" height="19" fill="none" stroke="#30302b"/><text x="559.5" y="45.5" class="tag" text-anchor="middle">EVENT-DRIVEN</text><rect x="608.5" y="32.5" width="59" height="19" fill="none" stroke="#30302b"/><text x="637.5" y="45.5" class="tag" text-anchor="middle">MAPPING</text>
 <text x="750" y="46" class="yr" text-anchor="end">2025</text>
 <line x1="770" y1="0" x2="770" y2="84" stroke="#30302b"/>
 <path d="M794 48 l12 -12 M797 36 h9 v9" fill="none" stroke="#ff3800" stroke-width="1.6"/>
