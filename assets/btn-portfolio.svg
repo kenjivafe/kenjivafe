@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="201" height="40" viewBox="0 0 201 40" role="img" aria-label="View Portfolio">
+<style>.b{font:700 11px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.12em;fill:#10100e}</style>
+<rect x=".5" y=".5" width="200" height="39" fill="#ffffe3" stroke="#ffffe3"/>
+<g transform="translate(22 13) scale(0.0265)"><polygon fill="#10100e" points="629.37 527.12 549.44 386.65 527.73 415 527.73 527.12 0 527.12 0 0 527.73 0 527.73 134.24 629.11 0 845.42 0 666.04 234.3 834.93 527.12 629.37 527.12"/><polygon fill="#ffffe3" points="765.68 487.12 652.63 487.12 554.36 314.42 487.73 401.44 487.73 487.12 40 487.12 40 40 487.73 40 487.73 253.57 649.03 40 764.42 40 618.06 231.17 765.68 487.12"/><circle fill="#ff3800" cx="263.57" cy="263.56" r="156.57"/></g>
+<text x="115.5" y="24.5" class="b" text-anchor="middle">VIEW PORTFOLIO  ↗</text>
+</svg>

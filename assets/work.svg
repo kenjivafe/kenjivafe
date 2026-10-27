@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="40" viewBox="0 0 830 40" role="img" aria-label="Selected work">
+<style>
+  .t{font:700 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.14em;fill:#c0c0ab}
+  .tc{font:500 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#8a8a7a}
+  .lbl{font:500 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#c0c0ab}
+  .val{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3;letter-spacing:-.01em}
+  .big{font:900 40px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3;letter-spacing:-.05em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a7a}</style>
+<rect x=".5" y=".5" width="829" height="39" fill="#10100e" stroke="#30302b"/>
+<text x="24" y="25" class="t">SELECTED WORK</text>
+<text x="806" y="25" class="tc" text-anchor="end">04 PROJECTS</text>
+</svg>

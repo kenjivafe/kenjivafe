@@ -49,22 +49,33 @@ const fmt = (n) => n.toLocaleString("en-US");
 const fmtDate = (d) =>
   new Date(d + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 
-function frame(w, h, num, title, body, right = "") {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}">
-<style>${FONT_FACE}
+const STYLE = `${FONT_FACE}
   .t{font:700 10px ${T.sans};letter-spacing:.14em;fill:${T.muted}}
-  .n{fill:${T.accent}}
+  .tc{font:500 10px ${T.sans};letter-spacing:.08em;fill:${T.dim}}
   .lbl{font:500 13px ${T.sans};fill:${T.muted}}
   .val{font:700 15px ${T.sans};fill:${T.text};letter-spacing:-.01em}
   .big{font:900 40px ${T.sans};fill:${T.text};letter-spacing:-.05em}
-  .sub{font:400 11px ${T.mono};fill:${T.dim}}
-</style>
+  .sub{font:400 11px ${T.mono};fill:${T.dim}}`;
+
+function svg(w, h, label, inner, extraStyle = "") {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}">
+<style>${STYLE}${extraStyle}</style>
 <rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" fill="${T.bg}" stroke="${T.line}"/>
-<text x="24" y="34" class="t"><tspan class="n">${num}</tspan>  ${esc(title.toUpperCase())}</text>
-${right ? `<text x="${w - 24}" y="34" class="t" text-anchor="end">${right}</text>` : ""}
-<line x1="24" y1="48" x2="${w - 24}" y2="48" stroke="${T.line}"/>
-${body}
+${inner}
 </svg>`;
+}
+
+// Card with a portfolio-style label bar: TITLE on the left, a count on the right.
+function frame(w, h, title, body, right = "") {
+  return svg(
+    w,
+    h,
+    title,
+    `<text x="24" y="29" class="t">${esc(title.toUpperCase())}</text>
+${right ? `<text x="${w - 24}" y="29" class="tc" text-anchor="end">${right}</text>` : ""}
+<line x1="0" y1="48" x2="${w}" y2="48" stroke="${T.line}"/>
+${body}`
+  );
 }
 
 /* ------------------------------------------------------------------ rank */
@@ -119,7 +130,7 @@ function statsCard(s) {
   <text y="10" text-anchor="middle" style="font:900 32px ${T.sans};fill:${T.text};letter-spacing:-.04em">${r.level}</text>
 </g>
 <text x="339" y="198" class="sub" text-anchor="middle">TOP ${r.percentile < 1 ? r.percentile.toFixed(1) : Math.round(r.percentile)}%</text>`;
-  return frame(410, 220, "01", "GitHub stats", body);
+  return frame(410, 220, "GitHub stats", body, "ALL TIME");
 }
 
 function langsCard(langs) {
@@ -147,7 +158,7 @@ function langsCard(langs) {
 </g>`;
     })
     .join("\n");
-  return frame(410, 220, "02", "Top languages", bar + "\n" + list);
+  return frame(410, 220, "Top languages", bar + "\n" + list, "BY SIZE");
 }
 
 function streakCard(st) {
@@ -168,7 +179,7 @@ function streakCard(st) {
 </g>`;
     })
     .join("\n");
-  return frame(830, 164, "03", "Contributions", body);
+  return frame(830, 164, "Contributions", body, `SINCE ${st.firstDay.slice(0, 4)}`);
 }
 
 function heatmapCard(weeks, total) {
@@ -205,7 +216,239 @@ function heatmapCard(weeks, total) {
 <text x="${x0}" y="${ly}" class="sub">${fmt(total)} CONTRIBUTIONS IN THE LAST YEAR</text>
 <text x="${830 - 24 - 34 - 5 * 15 - 8}" y="${ly}" class="sub" text-anchor="end">LESS</text>${legend}
 <text x="${830 - 24}" y="${ly}" class="sub" text-anchor="end">MORE</text>`;
-  return frame(830, ly + 22, "04", "Last 12 months", body, `@${esc(USERNAME)}`);
+  return frame(830, ly + 22, "Last 12 months", body, `@${esc(USERNAME)}`);
+}
+
+/* ------------------------------------------------------------------ content */
+// Edit these to change what the profile shows. Mirrors kenjivafe.vercel.app.
+
+const CONTENT = {
+  about: [
+    "I build precise, thoughtful digital products — from",
+    "scalable backend architectures to fluid user interfaces.",
+    "Focused on crafting software that feels effortless",
+    "and intentional.",
+  ],
+  location: "KALINGA, PH",
+  work: [
+    { name: "Rigko", desc: "Custom PC Configuration & Logistics SaaS", tags: ["Next.js", "System Design", "E-commerce"], year: 2026, url: "https://rigko.com" },
+    { name: "Gymcentrix", desc: "Enterprise Gym Management & Analytics Platform", tags: ["SaaS", "PostgreSQL", "Real-time"], year: 2026, url: "https://gymcentrix.vercel.app" },
+    { name: "Grit Digital Performance", desc: "Sports Data Infrastructure & Team Management", tags: ["Backend", "API Design", "Infrastructure"], year: 2026, url: "https://gritdp.com" },
+    { name: "RESQ-Link", desc: "Real-time Emergency Dispatch & Event Response", tags: ["Real-time", "Event-Driven", "Mapping"], year: 2025, url: "https://resq-link-kappa.vercel.app" },
+  ],
+  more: [
+    ["Tenantra", "Real estate management"],
+    ["Airtime", "Premiere & airing countdowns"],
+    ["Perbee", "AI personal best tracker"],
+    ["SPUP AdServIS", "Administrative services system"],
+    ["Doctor Smile", "Dental appointment system"],
+    ["DICT Geofence", "Geofenced attendance"],
+    ["Apit Lako", "Mobile marketplace"],
+  ],
+  experience: [
+    ["2026 — Now", "Founder and Lead Developer", "Rigko"],
+    ["2026 — Now", "Backend and API Developer", "Grit Digital Performance"],
+    ["2025 — Now", "UI/UX and Frontend Developer", "RESQ-Link"],
+    ["2025 — Now", "Founder and Lead Developer", "Northernware"],
+    ["2024 — Now", "Apprentice", "Hackthenorth.ph"],
+    ["2025", "Apprentice and Junior Developer", "DICT Region II"],
+  ],
+  // [name, simple-icons slug or null]
+  capabilities: [
+    ["React", "react"], ["Next.js", "nextdotjs"], ["TypeScript", "typescript"], ["Tailwind", "tailwindcss"],
+    ["PostgreSQL", "postgresql"], ["npm", "npm"], ["Prisma", "prisma"], ["Shadcn UI", "shadcnui"],
+    ["Node.js", "nodedotjs"], ["Express.js", "express"], ["FastAPI", "fastapi"], ["Postman", "postman"],
+    ["Git", "git"], ["Vercel", "vercel"], ["Railway", "railway"], ["Expo", "expo"],
+    ["Photoshop", null], ["Illustrator", null], ["Figma", "figma"], ["Canva", null],
+    ["Antigravity", null], ["Claude", "claude"], ["ChatGPT", "openai"], ["Windsurf", "windsurf"],
+  ],
+  email: "kenjivafe@gmail.com",
+  links: [
+    { id: "portfolio", label: "View Portfolio", primary: true, logo: true },
+    { id: "linkedin", label: "LinkedIn" },
+    { id: "email", label: "Email" },
+  ],
+};
+
+/* ------------------------------------------------------------------ sections */
+
+const W = 830;
+const charW = (text, size, track = 0) => text.length * size * (0.56 + track); // rough Satoshi advance
+
+function aboutSvg(commitsThisYear) {
+  const H = 260, split = 420;
+  const stats = [
+    ["5", "+", "Years experience"],
+    ["10", "+", "Unfinished side projects"],
+    [fmt(commitsThisYear), "", "Commits this year"],
+    ["100", "%", "Model quota used"],
+  ];
+  const cw = (W - split) / 2, ch = (H - 48) / 2;
+  const cells = stats
+    .map(([n, sup, l], i) => {
+      const x = split + (i % 2) * cw, y = 48 + Math.floor(i / 2) * ch;
+      return `<text x="${x + 28}" y="${y + 62}" class="num">${n}<tspan class="sup" dy="-16">${sup}</tspan></text>
+<text x="${x + 28}" y="${y + 86}" class="t">${l.toUpperCase()}</text>`;
+    })
+    .join("\n");
+  const body = `${CONTENT.about.map((l, i) => `<text x="24" y="${92 + i * 26}" class="p">${esc(l)}</text>`).join("\n")}
+<line x1="${split}" y1="48" x2="${split}" y2="${H}" stroke="${T.line}"/>
+<line x1="${split + cw}" y1="48" x2="${split + cw}" y2="${H}" stroke="${T.line}"/>
+<line x1="${split}" y1="${48 + ch}" x2="${W}" y2="${48 + ch}" stroke="${T.line}"/>
+${cells}`;
+  return svg(W, H, "About", `<text x="24" y="29" class="t">ABOUT</text>
+<text x="${W - 24}" y="29" class="tc" text-anchor="end">${CONTENT.location}</text>
+<line x1="0" y1="48" x2="${W}" y2="48" stroke="${T.line}"/>
+${body}`, `
+  .p{font:400 14px ${T.sans};fill:${T.muted}}
+  .num{font:900 42px ${T.sans};letter-spacing:-.05em;fill:${T.text}}
+  .sup{font:900 20px ${T.sans};fill:${T.accent}}`);
+}
+
+function buttonSvg(b) {
+  const label = b.label.toUpperCase() + (b.primary ? "  ↗" : "");
+  const logoW = b.logo ? 30 : 0;
+  const w = Math.round(charW(label, 11, 0.12) + 44 + logoW), h = 40;
+  const fg = b.primary ? T.bg : T.muted;
+  const logo = b.logo
+    ? `<g transform="translate(22 13) scale(0.0265)"><polygon fill="${T.bg}" points="629.37 527.12 549.44 386.65 527.73 415 527.73 527.12 0 527.12 0 0 527.73 0 527.73 134.24 629.11 0 845.42 0 666.04 234.3 834.93 527.12 629.37 527.12"/><polygon fill="${T.text}" points="765.68 487.12 652.63 487.12 554.36 314.42 487.73 401.44 487.73 487.12 40 487.12 40 40 487.73 40 487.73 253.57 649.03 40 764.42 40 618.06 231.17 765.68 487.12"/><circle fill="${T.accent}" cx="263.57" cy="263.56" r="156.57"/></g>`
+    : "";
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(b.label)}">
+<style>${FONT_FACE}.b{font:700 11px ${T.sans};letter-spacing:.12em;fill:${fg}}</style>
+<rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" fill="${b.primary ? T.text : T.bg}" stroke="${b.primary ? T.text : T.line}"/>
+${logo}
+<text x="${(w + logoW) / 2}" y="24.5" class="b" text-anchor="middle">${esc(label)}</text>
+</svg>`;
+}
+
+function labelBarSvg(title, right) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="40" viewBox="0 0 ${W} 40" role="img" aria-label="${esc(title)}">
+<style>${STYLE}</style>
+<rect x=".5" y=".5" width="${W - 1}" height="39" fill="${T.bg}" stroke="${T.line}"/>
+<text x="24" y="25" class="t">${esc(title.toUpperCase())}</text>
+<text x="${W - 24}" y="25" class="tc" text-anchor="end">${esc(right)}</text>
+</svg>`;
+}
+
+function workRowSvg(p, i) {
+  const H = 84;
+  const tagsW = 280, yearW = 70, arrowW = 60;
+  const xTags = W - arrowW - yearW - tagsW;
+  let tx = xTags + 20;
+  const tags = p.tags
+    .map((t) => {
+      const label = t.toUpperCase();
+      const w = Math.round(charW(label, 9, 0.1) + 14);
+      const g = `<rect x="${tx + 0.5}" y="${H / 2 - 9.5}" width="${w}" height="19" fill="none" stroke="${T.line}"/><text x="${tx + w / 2}" y="${H / 2 + 3.5}" class="tag" text-anchor="middle">${esc(label)}</text>`;
+      tx += w + 4;
+      return g;
+    })
+    .join("");
+  return svg(W, H, p.name, `<line x1="44" y1="0" x2="44" y2="${H}" stroke="${T.line}"/>
+<text x="22" y="${H / 2 + 4}" class="pn" text-anchor="middle">${String(i + 1).padStart(2, "0")}</text>
+<text x="76" y="38" class="name">${esc(p.name)}</text>
+<text x="76" y="58" class="desc">${esc(p.desc)}</text>
+<line x1="${xTags}" y1="0" x2="${xTags}" y2="${H}" stroke="${T.line}"/>
+${tags}
+<text x="${W - arrowW - 20}" y="${H / 2 + 4}" class="yr" text-anchor="end">${p.year}</text>
+<line x1="${W - arrowW}" y1="0" x2="${W - arrowW}" y2="${H}" stroke="${T.line}"/>
+<path d="M${W - 36} ${H / 2 + 6} l12 -12 M${W - 33} ${H / 2 - 6} h9 v9" fill="none" stroke="${T.accent}" stroke-width="1.6"/>`, `
+  .pn{font:700 11px ${T.sans};letter-spacing:.06em;fill:${T.dim}}
+  .name{font:700 18px ${T.sans};letter-spacing:-.025em;fill:${T.text}}
+  .desc{font:400 13px ${T.sans};fill:${T.muted}}
+  .tag{font:700 9px ${T.sans};letter-spacing:.08em;fill:${T.muted}}
+  .yr{font:600 11px ${T.sans};letter-spacing:.04em;fill:${T.dim}}`);
+}
+
+function moreSvg() {
+  const rows = Math.ceil(CONTENT.more.length / 2), rh = 56, H = 48 + rows * rh;
+  const cells = CONTENT.more
+    .map(([n, d], i) => {
+      const x = (i % 2) * (W / 2), y = 48 + Math.floor(i / 2) * rh;
+      return `<text x="${x + 24}" y="${y + 26}" class="name">${esc(n)}</text><text x="${x + 24}" y="${y + 44}" class="desc">${esc(d)}</text>`;
+    })
+    .join("\n");
+  const lines = Array.from({ length: rows - 1 }, (_, r) => `<line x1="0" y1="${48 + (r + 1) * rh}" x2="${W}" y2="${48 + (r + 1) * rh}" stroke="${T.line}"/>`).join("");
+  return frame(W, H, "Also built", `<line x1="${W / 2}" y1="48" x2="${W / 2}" y2="${H}" stroke="${T.line}"/>${lines}\n${cells}`, `${String(CONTENT.more.length).padStart(2, "0")} PROJECTS`)
+    .replace("</style>", `.name{font:700 15px ${T.sans};letter-spacing:-.02em;fill:${T.text}}.desc{font:400 12px ${T.sans};fill:${T.muted}}</style>`);
+}
+
+function experienceSvg() {
+  const rh = 62, H = 48 + CONTENT.experience.length * rh;
+  const rows = CONTENT.experience
+    .map(([yr, role, place], i) => {
+      const y = 48 + i * rh;
+      return `${i ? `<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="${T.line}"/>` : ""}
+<text x="24" y="${y + 27}" class="yr">${esc(yr.toUpperCase())}</text>
+<text x="168" y="${y + 27}" class="role">${esc(role)}</text>
+<text x="168" y="${y + 45}" class="place">${esc(place)}</text>`;
+    })
+    .join("\n");
+  return frame(W, H, "Experience", `<line x1="144" y1="48" x2="144" y2="${H}" stroke="${T.line}"/>\n${rows}`, `${String(CONTENT.experience.length).padStart(2, "0")} ROLES`).replace(
+    "</style>",
+    `.yr{font:600 11px ${T.sans};letter-spacing:.06em;fill:${T.dim}}.role{font:700 14px ${T.sans};letter-spacing:-.01em;fill:${T.text}}.place{font:400 12px ${T.sans};fill:${T.muted}}</style>`
+  );
+}
+
+async function capabilitiesSvg() {
+  const cols = 4, rh = 64, cw = W / cols;
+  const items = CONTENT.capabilities;
+  const H = 48 + Math.ceil(items.length / cols) * rh;
+  const icons = await Promise.all(
+    items.map(async ([, slug]) => {
+      if (!slug || MOCK) return null;
+      try {
+        const r = await fetch(`https://cdn.simpleicons.org/${slug}/${T.muted.slice(1)}`);
+        if (!r.ok) return null;
+        return Buffer.from(await r.text()).toString("base64");
+      } catch {
+        return null;
+      }
+    })
+  );
+  const cells = items
+    .map(([name], i) => {
+      const x = (i % cols) * cw, y = 48 + Math.floor(i / cols) * rh;
+      const ix = x + 24, iy = y + rh / 2 - 10;
+      const icon = icons[i]
+        ? `<image href="data:image/svg+xml;base64,${icons[i]}" x="${ix}" y="${iy}" width="20" height="20" opacity=".55"/>`
+        : `<rect x="${ix + 0.5}" y="${iy + 0.5}" width="19" height="19" fill="none" stroke="${T.dim}"/><text x="${ix + 10}" y="${iy + 13.5}" class="ab" text-anchor="middle">${esc(name.slice(0, 2))}</text>`;
+      return `${icon}<text x="${ix + 34}" y="${y + rh / 2 + 5}" class="cap">${esc(name)}</text>`;
+    })
+    .join("\n");
+  const grid =
+    Array.from({ length: cols - 1 }, (_, c) => `<line x1="${(c + 1) * cw}" y1="48" x2="${(c + 1) * cw}" y2="${H}" stroke="${T.line}"/>`).join("") +
+    Array.from({ length: Math.ceil(items.length / cols) - 1 }, (_, r) => `<line x1="0" y1="${48 + (r + 1) * rh}" x2="${W}" y2="${48 + (r + 1) * rh}" stroke="${T.line}"/>`).join("");
+  return frame(W, H, "Capabilities", `${grid}\n${cells}`, `${items.length} TOOLS`).replace(
+    "</style>",
+    `.cap{font:700 14px ${T.sans};letter-spacing:-.01em;fill:${T.muted}}.ab{font:700 9px ${T.sans};fill:${T.dim}}</style>`
+  );
+}
+
+function contactSvg() {
+  const H = 300, split = 430;
+  return svg(W, H, "Let's build together.", `<text x="24" y="29" class="t">CONTACT</text>
+<text x="${W - 24}" y="29" class="tc" text-anchor="end">OPEN TO WORK</text>
+<line x1="0" y1="48" x2="${W}" y2="48" stroke="${T.line}"/>
+<line x1="${split}" y1="48" x2="${split}" y2="${H}" stroke="${T.line}"/>
+<text x="24" y="138" class="h">Let's build</text>
+<text x="24" y="196" class="h"><tspan fill="${T.accent}">together.</tspan></text>
+<text x="24" y="236" class="p">Open to freelance projects, full-time roles,</text>
+<text x="24" y="258" class="p">and interesting collaborations.</text>
+<text x="${split + 24}" y="86" class="t">DIRECT EMAIL</text>
+<text x="${split + 24}" y="122" class="mail">${esc(CONTENT.email)}</text>
+<line x1="${split}" y1="160" x2="${W}" y2="160" stroke="${T.line}"/>
+<text x="${split + 24}" y="196" class="t">BASED IN</text>
+<text x="${split + 24}" y="220" class="v">Kalinga, Philippines</text>
+<text x="${split + 200}" y="196" class="t">TIMEZONE</text>
+<text x="${split + 200}" y="220" class="v">GMT+8</text>
+<text x="${split + 24}" y="262" class="t">STATUS</text>
+<circle cx="${split + 28}" cy="281" r="3" fill="${T.green}"/>
+<text x="${split + 40}" y="285" class="v">Available for new work</text>`, `
+  .h{font:900 56px ${T.sans};letter-spacing:-.04em;fill:${T.text}}
+  .p{font:400 14px ${T.sans};fill:${T.muted}}
+  .mail{font:800 26px ${T.sans};letter-spacing:-.02em;fill:${T.text}}
+  .v{font:600 13px ${T.sans};fill:${T.text}}`);
 }
 
 /* ------------------------------------------------------------------ hero + footer */
@@ -294,7 +537,7 @@ async function fetchAll() {
   } while (after);
 
   // Every contribution year: commits + full calendar
-  let commits = 0;
+  let commits = 0, commitsThisYear = 0;
   const days = [];
   let lastYear = null;
   for (const y of u.contributionsCollection.contributionYears) {
@@ -308,6 +551,7 @@ async function fetchAll() {
     );
     const c = d.user.contributionsCollection;
     commits += c.totalCommitContributions + c.restrictedContributionsCount;
+    if (y === new Date().getUTCFullYear()) commitsThisYear = c.totalCommitContributions + c.restrictedContributionsCount;
     for (const w of c.contributionCalendar.weeks) for (const x of w.contributionDays) days.push(x);
   }
 
@@ -328,6 +572,7 @@ async function fetchAll() {
       reviews: u.contributionsCollection.totalPullRequestReviewContributions,
       followers: u.followers.totalCount,
       contributedTo: u.repositoriesContributedTo.totalCount,
+      commitsThisYear,
     },
     langs: [...langMap].map(([name, size]) => ({ name, size })).sort((a, b) => b.size - a.size),
     days: days.map((d) => ({ date: d.date, count: d.contributionCount })),
@@ -352,7 +597,7 @@ function mockData() {
   for (let i = start; i < recent.length; i += 7) weeks.push(recent.slice(i, i + 7));
   const lv = (c) => (c === 0 ? "NONE" : c < 4 ? "FIRST_QUARTILE" : c < 8 ? "SECOND_QUARTILE" : c < 14 ? "THIRD_QUARTILE" : "FOURTH_QUARTILE");
   return {
-    stats: { stars: 42, commits: 3050, prs: 61, issues: 18, reviews: 4, followers: 37, contributedTo: 14 },
+    stats: { stars: 42, commits: 3050, prs: 61, issues: 18, reviews: 4, followers: 37, contributedTo: 14, commitsThisYear: 1890 },
     langs: [["TypeScript", 900], ["JavaScript", 300], ["PHP", 220], ["Python", 160], ["CSS", 120], ["Blade", 60], ["Dart", 40], ["Shell", 12]].map(([name, size]) => ({ name, size })),
     days,
     heat: { total: 3060, weeks: weeks.map((w) => w.map((d) => ({ ...d, level: lv(d.count) }))) },
@@ -392,7 +637,20 @@ if (!MOCK && !TOKEN) {
 }
 const data = MOCK ? mockData() : await fetchAll();
 await mkdir(OUT, { recursive: true });
+const files = {
+  "hero.svg": heroSvg(),
+  "about.svg": aboutSvg(data.stats.commitsThisYear),
+  "work.svg": labelBarSvg("Selected work", `${String(CONTENT.work.length).padStart(2, "0")} PROJECTS`),
+  "more.svg": moreSvg(),
+  "experience.svg": experienceSvg(),
+  "capabilities.svg": await capabilitiesSvg(),
+  "activity.svg": labelBarSvg("Activity", "UPDATED EVERY 6 HOURS"),
+  "contact.svg": contactSvg(),
+};
+CONTENT.links.forEach((b) => (files[`btn-${b.id}.svg`] = buttonSvg(b)));
+CONTENT.work.forEach((p, i) => (files[`work-${i + 1}.svg`] = workRowSvg(p, i)));
 await Promise.all([
+  ...Object.entries(files).map(([n, c]) => writeFile(new URL(n, OUT), c)),
   writeFile(new URL("hero.svg", OUT), heroSvg()),
   writeFile(new URL("footer.svg", OUT), footerSvg()),
   writeFile(new URL("stats.svg", OUT), statsCard(data.stats)),
@@ -400,4 +658,4 @@ await Promise.all([
   writeFile(new URL("streak.svg", OUT), streakCard(streaks(data.days))),
   writeFile(new URL("heatmap.svg", OUT), heatmapCard(data.heat.weeks, data.heat.total)),
 ]);
-console.log("Wrote hero, footer, stats, languages, streak, heatmap" + (FONT_FACE ? " with Satoshi" : " (system fonts)"), MOCK ? "(mock data)" : "");
+console.log(`Wrote ${Object.keys(files).length + 5} SVGs` + (FONT_FACE ? " with Satoshi" : " (system fonts)"), MOCK ? "(mock data)" : "");

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="432" viewBox="0 0 830 432" role="img" aria-label="Capabilities">
+<style>
+  .t{font:700 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.14em;fill:#c0c0ab}
+  .tc{font:500 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#8a8a7a}
+  .lbl{font:500 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#c0c0ab}
+  .val{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3;letter-spacing:-.01em}
+  .big{font:900 40px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3;letter-spacing:-.05em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a7a}.cap{font:700 14px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.01em;fill:#c0c0ab}.ab{font:700 9px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#8a8a7a}</style>
+<rect x=".5" y=".5" width="829" height="431" fill="#10100e" stroke="#30302b"/>
+<text x="24" y="29" class="t">CAPABILITIES</text>
+<text x="806" y="29" class="tc" text-anchor="end">24 TOOLS</text>
+<line x1="0" y1="48" x2="830" y2="48" stroke="#30302b"/>
+<line x1="207.5" y1="48" x2="207.5" y2="432" stroke="#30302b"/><line x1="415" y1="48" x2="415" y2="432" stroke="#30302b"/><line x1="622.5" y1="48" x2="622.5" y2="432" stroke="#30302b"/><line x1="0" y1="112" x2="830" y2="112" stroke="#30302b"/><line x1="0" y1="176" x2="830" y2="176" stroke="#30302b"/><line x1="0" y1="240" x2="830" y2="240" stroke="#30302b"/><line x1="0" y1="304" x2="830" y2="304" stroke="#30302b"/><line x1="0" y1="368" x2="830" y2="368" stroke="#30302b"/>
+<rect x="24.5" y="70.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="34" y="83.5" class="ab" text-anchor="middle">Re</text><text x="58" y="85" class="cap">React</text>
+<rect x="232" y="70.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="241.5" y="83.5" class="ab" text-anchor="middle">Ne</text><text x="265.5" y="85" class="cap">Next.js</text>
+<rect x="439.5" y="70.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="449" y="83.5" class="ab" text-anchor="middle">Ty</text><text x="473" y="85" class="cap">TypeScript</text>
+<rect x="647" y="70.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="656.5" y="83.5" class="ab" text-anchor="middle">Ta</text><text x="680.5" y="85" class="cap">Tailwind</text>
+<rect x="24.5" y="134.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="34" y="147.5" class="ab" text-anchor="middle">Po</text><text x="58" y="149" class="cap">PostgreSQL</text>
+<rect x="232" y="134.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="241.5" y="147.5" class="ab" text-anchor="middle">np</text><text x="265.5" y="149" class="cap">npm</text>
+<rect x="439.5" y="134.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="449" y="147.5" class="ab" text-anchor="middle">Pr</text><text x="473" y="149" class="cap">Prisma</text>
+<rect x="647" y="134.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="656.5" y="147.5" class="ab" text-anchor="middle">Sh</text><text x="680.5" y="149" class="cap">Shadcn UI</text>
+<rect x="24.5" y="198.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="34" y="211.5" class="ab" text-anchor="middle">No</text><text x="58" y="213" class="cap">Node.js</text>
+<rect x="232" y="198.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="241.5" y="211.5" class="ab" text-anchor="middle">Ex</text><text x="265.5" y="213" class="cap">Express.js</text>
+<rect x="439.5" y="198.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="449" y="211.5" class="ab" text-anchor="middle">Fa</text><text x="473" y="213" class="cap">FastAPI</text>
+<rect x="647" y="198.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="656.5" y="211.5" class="ab" text-anchor="middle">Po</text><text x="680.5" y="213" class="cap">Postman</text>
+<rect x="24.5" y="262.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="34" y="275.5" class="ab" text-anchor="middle">Gi</text><text x="58" y="277" class="cap">Git</text>
+<rect x="232" y="262.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="241.5" y="275.5" class="ab" text-anchor="middle">Ve</text><text x="265.5" y="277" class="cap">Vercel</text>
+<rect x="439.5" y="262.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="449" y="275.5" class="ab" text-anchor="middle">Ra</text><text x="473" y="277" class="cap">Railway</text>
+<rect x="647" y="262.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="656.5" y="275.5" class="ab" text-anchor="middle">Ex</text><text x="680.5" y="277" class="cap">Expo</text>
+<rect x="24.5" y="326.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="34" y="339.5" class="ab" text-anchor="middle">Ph</text><text x="58" y="341" class="cap">Photoshop</text>
+<rect x="232" y="326.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="241.5" y="339.5" class="ab" text-anchor="middle">Il</text><text x="265.5" y="341" class="cap">Illustrator</text>
+<rect x="439.5" y="326.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="449" y="339.5" class="ab" text-anchor="middle">Fi</text><text x="473" y="341" class="cap">Figma</text>
+<rect x="647" y="326.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="656.5" y="339.5" class="ab" text-anchor="middle">Ca</text><text x="680.5" y="341" class="cap">Canva</text>
+<rect x="24.5" y="390.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="34" y="403.5" class="ab" text-anchor="middle">An</text><text x="58" y="405" class="cap">Antigravity</text>
+<rect x="232" y="390.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="241.5" y="403.5" class="ab" text-anchor="middle">Cl</text><text x="265.5" y="405" class="cap">Claude</text>
+<rect x="439.5" y="390.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="449" y="403.5" class="ab" text-anchor="middle">Ch</text><text x="473" y="405" class="cap">ChatGPT</text>
+<rect x="647" y="390.5" width="19" height="19" fill="none" stroke="#8a8a7a"/><text x="656.5" y="403.5" class="ab" text-anchor="middle">Wi</text><text x="680.5" y="405" class="cap">Windsurf</text>
+</svg>

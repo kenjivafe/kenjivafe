@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="84" viewBox="0 0 830 84" role="img" aria-label="Grit Digital Performance">
+<style>
+  .t{font:700 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.14em;fill:#c0c0ab}
+  .tc{font:500 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#8a8a7a}
+  .lbl{font:500 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#c0c0ab}
+  .val{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3;letter-spacing:-.01em}
+  .big{font:900 40px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3;letter-spacing:-.05em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a7a}
+  .pn{font:700 11px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.06em;fill:#8a8a7a}
+  .name{font:700 18px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.025em;fill:#ffffe3}
+  .desc{font:400 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#c0c0ab}
+  .tag{font:700 9px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#c0c0ab}
+  .yr{font:600 11px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.04em;fill:#8a8a7a}</style>
+<rect x=".5" y=".5" width="829" height="83" fill="#10100e" stroke="#30302b"/>
+<line x1="44" y1="0" x2="44" y2="84" stroke="#30302b"/>
+<text x="22" y="46" class="pn" text-anchor="middle">03</text>
+<text x="76" y="38" class="name">Grit Digital Performance</text>
+<text x="76" y="58" class="desc">Sports Data Infrastructure &amp; Team Management</text>
+<line x1="420" y1="0" x2="420" y2="84" stroke="#30302b"/>
+<rect x="440.5" y="32.5" width="56" height="19" fill="none" stroke="#30302b"/><text x="468" y="45.5" class="tag" text-anchor="middle">BACKEND</text><rect x="500.5" y="32.5" width="73" height="19" fill="none" stroke="#30302b"/><text x="536.5" y="45.5" class="tag" text-anchor="middle">API DESIGN</text><rect x="577.5" y="32.5" width="97" height="19" fill="none" stroke="#30302b"/><text x="625.5" y="45.5" class="tag" text-anchor="middle">INFRASTRUCTURE</text>
+<text x="750" y="46" class="yr" text-anchor="end">2026</text>
+<line x1="770" y1="0" x2="770" y2="84" stroke="#30302b"/>
+<path d="M794 48 l12 -12 M797 36 h9 v9" fill="none" stroke="#ff3800" stroke-width="1.6"/>
+</svg>
