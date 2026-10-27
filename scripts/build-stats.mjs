@@ -232,26 +232,26 @@ const CONTENT = {
   ],
   location: "KALINGA, PH",
   work: [
-    { name: "Rigko", desc: "Custom PC Configuration & Logistics SaaS", tags: ["Next.js", "System Design", "E-commerce"], year: 2026, url: "https://rigko.com" },
-    { name: "Gymcentrix", desc: "Enterprise Gym Management & Analytics Platform", tags: ["SaaS", "PostgreSQL", "Real-time"], year: 2026, url: "https://gymcentrix.vercel.app" },
-    { name: "Grit Digital Performance", desc: "Sports Data Infrastructure & Team Management", tags: ["Backend", "API Design", "Infrastructure"], year: 2026, url: "https://gritdp.com" },
-    { name: "RESQ-Link", desc: "Real-time Emergency Dispatch & Event Response", tags: ["Real-time", "Event-Driven", "Mapping"], year: 2025, url: "https://resq-link-kappa.vercel.app" },
+    { name: "Rigko", logo: "rigko", desc: "Custom PC Configuration & Logistics SaaS", tags: ["Next.js", "System Design", "E-commerce"], year: 2026, url: "https://rigko.com" },
+    { name: "Gymcentrix", logo: "gymcentrix", desc: "Enterprise Gym Management & Analytics Platform", tags: ["SaaS", "PostgreSQL", "Real-time"], year: 2026, url: "https://gymcentrix.vercel.app" },
+    { name: "Grit Digital Performance", logo: "grit", desc: "Sports Data Infrastructure & Team Management", tags: ["Backend", "API Design", "Infrastructure"], year: 2026, url: "https://gritdp.com" },
+    { name: "RESQ-Link", logo: "resq-link", desc: "Real-time Emergency Dispatch & Event Response", tags: ["Real-time", "Event-Driven", "Mapping"], year: 2025, url: "https://resq-link-kappa.vercel.app" },
   ],
   more: [
-    ["Tenantra", "Real estate management"],
-    ["Airtime", "Premiere & airing countdowns"],
-    ["Perbee", "AI personal best tracker"],
-    ["SPUP AdServIS", "Administrative services system"],
-    ["Doctor Smile", "Dental appointment system"],
-    ["DICT Geofence", "Geofenced attendance"],
-    ["Apit Lako", "Mobile marketplace"],
+    ["Tenantra", "Real estate management", "tenantra"],
+    ["Airtime", "Premiere & airing countdowns", null],
+    ["Perbee", "AI personal best tracker", "perbee"],
+    ["SPUP AdServIS", "Administrative services system", "spup"],
+    ["Doctor Smile", "Dental appointment system", "doctor-smile"],
+    ["DICT Geofence", "Geofenced attendance", "dict"],
+    ["Apit Lako", "Mobile marketplace", "apit-lako"],
   ],
   experience: [
-    ["2026 — Now", "Web Developer", "Luxury Performance"],
-    ["2025 — Now", "UI/UX and Frontend Developer", "RESQ-Link"],
-    ["2025 — Now", "Founder and Lead Developer", "Northernware"],
-    ["2024 — Now", "Apprentice", "Hackthenorth.ph"],
-    ["2025", "Apprentice and Junior Developer", "DICT Region II"],
+    ["2026 — Now", "Web Developer", "Luxury Performance", "luxury-performance"],
+    ["2025 — Now", "UI/UX and Frontend Developer", "RESQ-Link", "resq-link"],
+    ["2025 — Now", "Founder and Lead Developer", "Northernware", "northernware"],
+    ["2024 — Now", "Apprentice", "Hackthenorth.ph", null],
+    ["2025", "Apprentice and Junior Developer", "DICT Region II", "dict"],
   ],
   // [name, simple-icons slug, letters shown when no icon exists]
   capabilities: [
@@ -269,6 +269,28 @@ const CONTENT = {
     { id: "email", label: "Email", icon: "mail" },
   ],
 };
+
+/* ------------------------------------------------------------------ logos */
+// Project/company logos live in assets/logos/<key>.svg|png (pulled from the
+// project repos) and are embedded so the cards stay self-contained.
+const LOGO_CACHE = {};
+async function loadLogos() {
+  const dir = new URL("../assets/logos/", import.meta.url);
+  for (const f of await import("node:fs/promises").then((m) => m.readdir(dir)).catch(() => [])) {
+    const [key, ext] = f.split(".");
+    const mime = ext === "svg" ? "image/svg+xml" : "image/png";
+    LOGO_CACHE[key] = `data:${mime};base64,${(await readFile(new URL(f, dir))).toString("base64")}`;
+  }
+}
+await loadLogos();
+
+// size-px logo at (x, y); letter tile when there is none
+function logoMark(key, name, x, y, size) {
+  if (key && LOGO_CACHE[key])
+    return `<image href="${LOGO_CACHE[key]}" x="${x}" y="${y}" width="${size}" height="${size}" preserveAspectRatio="xMidYMid meet"/>`;
+  const letters = name.replace(/[^A-Za-z]/g, "").slice(0, 2);
+  return `<rect x="${x + 0.5}" y="${y + 0.5}" width="${size - 1}" height="${size - 1}" fill="none" stroke="${T.dim}"/><text x="${x + size / 2}" y="${y + size / 2 + size * 0.14}" text-anchor="middle" style="font:800 ${Math.round(size * 0.38)}px ${T.sans};fill:${T.muted};letter-spacing:-.02em">${esc(letters)}</text>`;
+}
 
 /* ------------------------------------------------------------------ sections */
 
@@ -355,7 +377,7 @@ function labelBarSvg(title, right, W = 830) {
 
 function workRowSvg(p, i) {
   const H = 84;
-  const tagsW = 280, yearW = 70, arrowW = 60;
+  const tagsW = 262, yearW = 70, arrowW = 60;
   const xTags = W - arrowW - yearW - tagsW;
   let tx = xTags + 20;
   const tags = p.tags
@@ -369,8 +391,9 @@ function workRowSvg(p, i) {
     .join("");
   return svg(W, H, p.name, `<line x1="44" y1="0" x2="44" y2="${H}" stroke="${T.line}"/>
 <text x="22" y="${H / 2 + 4}" class="pn" text-anchor="middle">${String(i + 1).padStart(2, "0")}</text>
-<text x="76" y="38" class="name">${esc(p.name)}</text>
-<text x="76" y="58" class="desc">${esc(p.desc)}</text>
+${logoMark(p.logo, p.name, 68, H / 2 - 18, 36)}
+<text x="120" y="38" class="name">${esc(p.name)}</text>
+<text x="120" y="58" class="desc">${esc(p.desc)}</text>
 <line x1="${xTags}" y1="0" x2="${xTags}" y2="${H}" stroke="${T.line}"/>
 ${tags}
 <text x="${W - arrowW - 20}" y="${H / 2 + 4}" class="yr" text-anchor="end">${p.year}</text>
@@ -387,10 +410,10 @@ ${tags}
 function moreCompact(W = 830) {
   const pad = W < 600 ? 16 : 24, gap = 6, ch = 28;
   let x = pad, y = 48 + pad - 4;
-  const chips = CONTENT.more.map(([n]) => {
-    const w = Math.round(charW(n, 13, 0.02) + 22);
+  const chips = CONTENT.more.map(([n, , logo]) => {
+    const w = Math.round(charW(n, 13, 0.02) + 22 + 24);
     if (x + w > W - pad) { x = pad; y += ch + gap; }
-    const g = `<rect x="${x + 0.5}" y="${y + 0.5}" width="${w}" height="${ch}" fill="none" stroke="${T.line}"/><text x="${x + w / 2}" y="${y + 18.5}" class="chip" text-anchor="middle">${esc(n)}</text>`;
+    const g = `<rect x="${x + 0.5}" y="${y + 0.5}" width="${w}" height="${ch}" fill="none" stroke="${T.line}"/>${logoMark(logo, n, x + 7, y + 6, 16)}<text x="${x + 31}" y="${y + 18.5}" class="chip">${esc(n)}</text>`;
     x += w + gap;
     return g;
   });
@@ -417,12 +440,13 @@ function moreSvg() {
 function experienceSvg() {
   const rh = 62, H = 48 + CONTENT.experience.length * rh;
   const rows = CONTENT.experience
-    .map(([yr, role, place], i) => {
+    .map(([yr, role, place, logo], i) => {
       const y = 48 + i * rh;
       return `${i ? `<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="${T.line}"/>` : ""}
 <text x="24" y="${y + 27}" class="yr">${esc(yr.toUpperCase())}</text>
-<text x="168" y="${y + 27}" class="role">${esc(role)}</text>
-<text x="168" y="${y + 45}" class="place">${esc(place)}</text>`;
+${logoMark(logo, place, 168, y + 15, 32)}
+<text x="216" y="${y + 27}" class="role">${esc(role)}</text>
+<text x="216" y="${y + 45}" class="place">${esc(place)}</text>`;
     })
     .join("\n");
   return frame(W, H, "Experience", `<line x1="144" y1="48" x2="144" y2="${H}" stroke="${T.line}"/>\n${rows}`, `${String(CONTENT.experience.length).padStart(2, "0")} ROLES`).replace(
@@ -555,13 +579,13 @@ ${cells}`, `
 }
 
 function workRowM(p, i) {
-  const H = 110;
+  const H = 118;
   let tx = 16;
   const tags = p.tags
     .map((t) => {
       const label = t.toUpperCase();
       const w = Math.round(charW(label, 9, 0.12) + 16);
-      const g = `<rect x="${tx + 0.5}" y="78.5" width="${w}" height="19" fill="none" stroke="${T.line}"/><text x="${tx + w / 2}" y="91.5" class="tag" text-anchor="middle">${esc(label)}</text>`;
+      const g = `<rect x="${tx + 0.5}" y="84.5" width="${w}" height="19" fill="none" stroke="${T.line}"/><text x="${tx + w / 2}" y="97.5" class="tag" text-anchor="middle">${esc(label)}</text>`;
       tx += w + 4;
       return g;
     })
@@ -569,8 +593,9 @@ function workRowM(p, i) {
   return svg(MW, H, p.name, `<text x="16" y="30" class="pn">${String(i + 1).padStart(2, "0")}</text>
 <text x="${MW - 60}" y="30" class="yr" text-anchor="end">${p.year}</text>
 <path d="M${MW - 34} 32 l12 -12 M${MW - 31} 20 h9 v9" fill="none" stroke="${T.accent}" stroke-width="1.6"/>
-<text x="16" y="54" class="name">${esc(p.name)}</text>
-<text x="16" y="70" class="desc">${esc(p.desc)}</text>
+${logoMark(p.logo, p.name, 16, 40, 32)}
+<text x="58" y="54" class="name">${esc(p.name)}</text>
+<text x="58" y="70" class="desc">${esc(p.desc)}</text>
 ${tags}`, `
   .pn{font:700 11px ${T.sans};letter-spacing:.06em;fill:${T.dim}}
   .name{font:700 18px ${T.sans};letter-spacing:-.025em;fill:${T.text}}
@@ -599,12 +624,13 @@ ${c ? `<text x="16" y="${y + 20}" class="yr">${esc(c.toUpperCase())}</text>` : "
 function experienceM() {
   const rh = 72, H = 48 + CONTENT.experience.length * rh;
   const rows = CONTENT.experience
-    .map(([yr, role, place], i) => {
+    .map(([yr, role, place, logo], i) => {
       const y = 48 + i * rh;
       return `${i ? `<line x1="0" y1="${y}" x2="${MW}" y2="${y}" stroke="${T.line}"/>` : ""}
-<text x="16" y="${y + 22}" class="yr">${esc(yr.toUpperCase())}</text>
-<text x="16" y="${y + 42}" class="role">${esc(role)}</text>
-<text x="16" y="${y + 59}" class="place">${esc(place)}</text>`;
+${logoMark(logo, place, 16, y + 20, 32)}
+<text x="60" y="${y + 22}" class="yr">${esc(yr.toUpperCase())}</text>
+<text x="60" y="${y + 42}" class="role">${esc(role)}</text>
+<text x="60" y="${y + 59}" class="place">${esc(place)}</text>`;
     })
     .join("\n");
   return frame(MW, H, "Experience", rows, `${String(CONTENT.experience.length).padStart(2, "0")} ROLES`).replace(
@@ -912,7 +938,7 @@ for (const theme of Object.keys(THEMES)) {
   Object.assign(files, {
     "hero-m.svg": heroM(),
     "about-m.svg": aboutM(data.stats.commitsThisYear),
-    "work-1-m.svg": compose(MW, 40 + 110 - 1, CONTENT.work[0].name, [
+    "work-1-m.svg": compose(MW, 40 + 118 - 1, CONTENT.work[0].name, [
       [labelBarSvg("Selected work", `${String(CONTENT.work.length).padStart(2, "0")} PROJECTS`, MW), 0, 0],
       [mRows[0], 0, 39],
     ]),
