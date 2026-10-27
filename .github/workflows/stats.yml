@@ -31,6 +31,9 @@ jobs:
           echo "Using $FONT"
           echo "FONT_FILE=$FONT" >> "$GITHUB_ENV"
 
+      - name: Get icons
+        run: npm i --no-save --no-package-lock simple-icons
+
       - name: Build cards
         run: node scripts/build-stats.mjs
         env:

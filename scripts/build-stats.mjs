@@ -253,14 +253,14 @@ const CONTENT = {
     ["2024 — Now", "Apprentice", "Hackthenorth.ph"],
     ["2025", "Apprentice and Junior Developer", "DICT Region II"],
   ],
-  // [name, simple-icons slug or null]
+  // [name, simple-icons slug, letters shown when no icon exists]
   capabilities: [
     ["React", "react"], ["Next.js", "nextdotjs"], ["TypeScript", "typescript"], ["Tailwind", "tailwindcss"],
     ["PostgreSQL", "postgresql"], ["npm", "npm"], ["Prisma", "prisma"], ["Shadcn UI", "shadcnui"],
     ["Node.js", "nodedotjs"], ["Express.js", "express"], ["FastAPI", "fastapi"], ["Postman", "postman"],
     ["Git", "git"], ["Vercel", "vercel"], ["Railway", "railway"], ["Expo", "expo"],
-    ["Photoshop", null], ["Illustrator", null], ["Figma", "figma"], ["Canva", null],
-    ["Antigravity", null], ["Claude", "claude"], ["ChatGPT", "openai"], ["Windsurf", "windsurf"],
+    ["Photoshop", null, "Ps"], ["Illustrator", null, "Ai"], ["Figma", "figma"], ["Canva", null, "Ca"],
+    ["Antigravity", null, "Ag"], ["Claude", "claude"], ["ChatGPT", null, "AI"], ["Windsurf", "windsurf"],
   ],
   email: "kenjivafe@gmail.com",
   links: [
@@ -394,25 +394,17 @@ async function capabilitiesSvg() {
   const cols = 4, rh = 64, cw = W / cols;
   const items = CONTENT.capabilities;
   const H = 48 + Math.ceil(items.length / cols) * rh;
-  const icons = await Promise.all(
-    items.map(async ([, slug]) => {
-      if (!slug || MOCK) return null;
-      try {
-        const r = await fetch(`https://cdn.simpleicons.org/${slug}/${T.muted.slice(1)}`);
-        if (!r.ok) return null;
-        return Buffer.from(await r.text()).toString("base64");
-      } catch {
-        return null;
-      }
-    })
-  );
+  // Icons come from the simple-icons package (installed by the workflow).
+  const si = await import("simple-icons").catch(() => null);
+  if (!si) console.warn("simple-icons not installed; using letter tiles");
+  const icons = items.map(([, slug]) => (slug && si ? si["si" + slug[0].toUpperCase() + slug.slice(1)]?.path : null) || null);
   const cells = items
-    .map(([name], i) => {
+    .map(([name, , abbr], i) => {
       const x = (i % cols) * cw, y = 48 + Math.floor(i / cols) * rh;
       const ix = x + 24, iy = y + rh / 2 - 10;
       const icon = icons[i]
-        ? `<image href="data:image/svg+xml;base64,${icons[i]}" x="${ix}" y="${iy}" width="20" height="20" opacity=".55"/>`
-        : `<rect x="${ix + 0.5}" y="${iy + 0.5}" width="19" height="19" fill="none" stroke="${T.dim}"/><text x="${ix + 10}" y="${iy + 13.5}" class="ab" text-anchor="middle">${esc(name.slice(0, 2))}</text>`;
+        ? `<path d="${icons[i]}" transform="translate(${ix} ${iy}) scale(${20 / 24})" fill="${T.muted}" opacity=".6"/>`
+        : `<rect x="${ix + 0.5}" y="${iy + 0.5}" width="19" height="19" fill="none" stroke="${T.dim}"/><text x="${ix + 10}" y="${iy + 13.5}" class="ab" text-anchor="middle">${esc(abbr || name.slice(0, 2))}</text>`;
       return `${icon}<text x="${ix + 34}" y="${y + rh / 2 + 5}" class="cap">${esc(name)}</text>`;
     })
     .join("\n");
