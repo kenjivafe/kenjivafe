@@ -21,6 +21,7 @@ def pic(name, alt, width="100%", height=None, mobile=True, align=None):
     return "<picture>" + "".join(src) + f'<img src="{a}{name}-dark.svg{v(name + '-dark.svg')}" {size}{al} alt="{alt}" /></picture>'
 
 link = lambda url, inner: f'<a href="{url}">{inner}</a>'
+gap = "<br />\n"  # extra breathing room between sections
 blk = lambda *items, align="center": f'<p align="{align}">\n' + "\n".join("  " + i for i in items) + "\n</p>\n"
 work = [
     ("https://rigko.com", "Rigko — Custom PC Configuration & Logistics SaaS"),
@@ -38,15 +39,20 @@ out = [
         link("mailto:kenjivafe@gmail.com", pic("btn-email", "Email", height=40, mobile=False)),
         align="left",
     ),
+    gap,
     # Floated (align=left) so the rows and Also built stack flush with no gaps
     blk(
         *[link(u, pic(f"work-{i + 1}", a, align="left")) for i, (u, a) in enumerate(work)],
         link("https://kenjivafe.vercel.app/#work", pic("more", "Also built: Tenantra, Airtime, Perbee, SPUP AdServIS, Doctor Smile, DICT Geofence, Apit Lako", align="left")),
         '<br clear="all" />',
     ),
+    gap,
     blk(pic("experience", "Experience")),
+    gap,
     blk(pic("capabilities", "Capabilities")),
+    gap,
     blk(pic("activity", "GitHub activity")),
+    gap,
     blk(link("mailto:kenjivafe@gmail.com", pic("contact", "Let's build together. kenjivafe@gmail.com"))),
     blk(pic("footer", "Kenji Von Ashley")),
 ]

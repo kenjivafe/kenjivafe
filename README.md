@@ -14,6 +14,8 @@
   <a href="mailto:kenjivafe@gmail.com"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/btn-email-light.svg?v=1171cbcc" /><img src="./assets/btn-email-dark.svg?v=cd648bd0" height="40" alt="Email" /></picture></a>
 </p>
 
+<br />
+
 <p align="center">
   <a href="https://rigko.com"><picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/work-1-m-light.svg?v=25082b74" /><source media="(prefers-color-scheme: light)" srcset="./assets/work-1-light.svg?v=d3cb84a8" /><source media="(max-width: 600px)" srcset="./assets/work-1-m-dark.svg?v=7bc90390" /><img src="./assets/work-1-dark.svg?v=454fb1d9" width="100%" align="left" alt="Rigko — Custom PC Configuration & Logistics SaaS" /></picture></a>
   <a href="https://gymcentrix.vercel.app"><picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/work-2-m-light.svg?v=1b16a9c3" /><source media="(prefers-color-scheme: light)" srcset="./assets/work-2-light.svg?v=4c5b836e" /><source media="(max-width: 600px)" srcset="./assets/work-2-m-dark.svg?v=644bfb32" /><img src="./assets/work-2-dark.svg?v=68cfe168" width="100%" align="left" alt="Gymcentrix — Enterprise Gym Management & Analytics Platform" /></picture></a>
@@ -23,17 +25,25 @@
   <br clear="all" />
 </p>
 
+<br />
+
 <p align="center">
   <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/experience-m-light.svg?v=5a4778dd" /><source media="(prefers-color-scheme: light)" srcset="./assets/experience-light.svg?v=ced36cb6" /><source media="(max-width: 600px)" srcset="./assets/experience-m-dark.svg?v=7c1d6e17" /><img src="./assets/experience-dark.svg?v=9db88a16" width="100%" alt="Experience" /></picture>
 </p>
+
+<br />
 
 <p align="center">
   <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/capabilities-m-light.svg?v=2ea8b8f4" /><source media="(prefers-color-scheme: light)" srcset="./assets/capabilities-light.svg?v=22d6884d" /><source media="(max-width: 600px)" srcset="./assets/capabilities-m-dark.svg?v=5f0ab5ae" /><img src="./assets/capabilities-dark.svg?v=bf30ce97" width="100%" alt="Capabilities" /></picture>
 </p>
 
+<br />
+
 <p align="center">
   <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/activity-m-light.svg?v=d49298c6" /><source media="(prefers-color-scheme: light)" srcset="./assets/activity-light.svg?v=cc6f69d1" /><source media="(max-width: 600px)" srcset="./assets/activity-m-dark.svg?v=c867877b" /><img src="./assets/activity-dark.svg?v=137918f8" width="100%" alt="GitHub activity" /></picture>
 </p>
+
+<br />
 
 <p align="center">
   <a href="mailto:kenjivafe@gmail.com"><picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/contact-m-light.svg?v=ecab1c1f" /><source media="(prefers-color-scheme: light)" srcset="./assets/contact-light.svg?v=e751d682" /><source media="(max-width: 600px)" srcset="./assets/contact-m-dark.svg?v=24406c71" /><img src="./assets/contact-dark.svg?v=8570476c" width="100%" alt="Let's build together. kenjivafe@gmail.com" /></picture></a>
