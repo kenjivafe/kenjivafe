@@ -250,7 +250,7 @@ const CONTENT = {
     ["2026 — Now", "Web Developer", "Luxury Performance", "luxury-performance"],
     ["2025 — Now", "UI/UX and Frontend Developer", "RESQ-Link", "resq-link"],
     ["2025 — Now", "Founder and Lead Developer", "Northernware", "northernware"],
-    ["2024 — Now", "Apprentice", "Hackthenorth.ph", null],
+    ["2024 — Now", "Apprentice", "Hackthenorth.ph", "hackthenorth"],
     ["2025", "Apprentice and Junior Developer", "DICT Region II", "dict"],
   ],
   // [name, simple-icons slug, letters shown when no icon exists]
