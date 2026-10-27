@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="170" viewBox="0 0 390 170" role="img" aria-label="Kenji.">
+<style>
+  .e{font:700 9px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.12em;fill:#606055}
+  .name{font:900 104px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.05em;fill:#10100e}
+</style>
+<defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="#e8e8cf"/></pattern></defs>
+<rect x=".5" y=".5" width="389" height="169" fill="#ffffe3" stroke="#e8e8cf"/>
+<text x="16" y="24" class="e">SOFTWARE ENGINEER &amp; BUILDER</text>
+<circle cx="304" cy="20.8" r="2.8" fill="#22c55e"/>
+<text x="374" y="24" class="e" text-anchor="end">AVAILABLE</text>
+<line x1="0" y1="40" x2="390" y2="40" stroke="#e8e8cf"/>
+<rect x="1" y="41" width="388" height="128" fill="url(#dots)"/>
+<text x="14" y="134" class="name">Kenji<tspan fill="#ff3800">.</tspan></text>
+</svg>

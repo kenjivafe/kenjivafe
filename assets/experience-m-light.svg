@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="480" viewBox="0 0 390 480" role="img" aria-label="Experience">
+<style>
+  .t{font:700 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.14em;fill:#606055}
+  .tc{font:500 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#8a8a7a}
+  .lbl{font:500 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#606055}
+  .val{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.01em}
+  .big{font:900 40px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.05em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a7a}.yr{font:600 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.06em;fill:#8a8a7a}.role{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.01em;fill:#10100e}.place{font:400 12px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#606055}</style>
+<rect x=".5" y=".5" width="389" height="479" fill="#ffffe3" stroke="#e8e8cf"/>
+<text x="16" y="29" class="t">EXPERIENCE</text>
+<text x="374" y="29" class="tc" text-anchor="end">06 ROLES</text>
+<line x1="0" y1="48" x2="390" y2="48" stroke="#e8e8cf"/>
+
+<text x="16" y="70" class="yr">2026 — NOW</text>
+<text x="16" y="90" class="role">Founder and Lead Developer</text>
+<text x="16" y="107" class="place">Rigko</text>
+<line x1="0" y1="120" x2="390" y2="120" stroke="#e8e8cf"/>
+<text x="16" y="142" class="yr">2026 — NOW</text>
+<text x="16" y="162" class="role">Backend and API Developer</text>
+<text x="16" y="179" class="place">Grit Digital Performance</text>
+<line x1="0" y1="192" x2="390" y2="192" stroke="#e8e8cf"/>
+<text x="16" y="214" class="yr">2025 — NOW</text>
+<text x="16" y="234" class="role">UI/UX and Frontend Developer</text>
+<text x="16" y="251" class="place">RESQ-Link</text>
+<line x1="0" y1="264" x2="390" y2="264" stroke="#e8e8cf"/>
+<text x="16" y="286" class="yr">2025 — NOW</text>
+<text x="16" y="306" class="role">Founder and Lead Developer</text>
+<text x="16" y="323" class="place">Northernware</text>
+<line x1="0" y1="336" x2="390" y2="336" stroke="#e8e8cf"/>
+<text x="16" y="358" class="yr">2024 — NOW</text>
+<text x="16" y="378" class="role">Apprentice</text>
+<text x="16" y="395" class="place">Hackthenorth.ph</text>
+<line x1="0" y1="408" x2="390" y2="408" stroke="#e8e8cf"/>
+<text x="16" y="430" class="yr">2025</text>
+<text x="16" y="450" class="role">Apprentice and Junior Developer</text>
+<text x="16" y="467" class="place">DICT Region II</text>
+</svg>

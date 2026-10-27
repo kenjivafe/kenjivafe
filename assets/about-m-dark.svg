@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="375" viewBox="0 0 390 375" role="img" aria-label="About">
+<style>
+  .t{font:700 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.14em;fill:#c0c0ab}
+  .tc{font:500 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#8a8a7a}
+  .lbl{font:500 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#c0c0ab}
+  .val{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3;letter-spacing:-.01em}
+  .big{font:900 40px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3;letter-spacing:-.05em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a7a}
+  .p{font:400 14px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#c0c0ab}
+  .num{font:900 34px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.05em;fill:#ffffe3}
+  .sup{font:900 16px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ff3800}
+  .sl{font:600 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#c0c0ab}</style>
+<rect x=".5" y=".5" width="389" height="374" fill="#10100e" stroke="#30302b"/>
+<text x="16" y="29" class="t">ABOUT</text>
+<text x="374" y="29" class="tc" text-anchor="end">KALINGA, PH</text>
+<line x1="0" y1="48" x2="390" y2="48" stroke="#30302b"/>
+<text x="16" y="78" class="p">I build precise, thoughtful digital products</text>
+<text x="16" y="101" class="p">— from scalable backend architectures to</text>
+<text x="16" y="124" class="p">fluid user interfaces. Focused on crafting</text>
+<text x="16" y="147" class="p">software that feels effortless and</text>
+<text x="16" y="170" class="p">intentional.</text>
+<line x1="0" y1="199" x2="390" y2="199" stroke="#30302b"/>
+<line x1="0" y1="287" x2="390" y2="287" stroke="#30302b"/>
+<line x1="195" y1="199" x2="195" y2="375" stroke="#30302b"/>
+<text x="16" y="243" class="num">5<tspan class="sup" dy="-12">+</tspan></text>
+<text x="16" y="263" class="sl">YEARS EXPERIENCE</text>
+<text x="211" y="243" class="num">10<tspan class="sup" dy="-12">+</tspan></text>
+<text x="211" y="263" class="sl">UNFINISHED SIDE</text><text x="211" y="276" class="sl">PROJECTS</text>
+<text x="16" y="331" class="num">1,890<tspan class="sup" dy="-12"></tspan></text>
+<text x="16" y="351" class="sl">COMMITS THIS YEAR</text>
+<text x="211" y="331" class="num">100<tspan class="sup" dy="-12">%</tspan></text>
+<text x="211" y="351" class="sl">MODEL QUOTA USED</text>
+</svg>

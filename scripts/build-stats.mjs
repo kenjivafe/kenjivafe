@@ -67,12 +67,13 @@ ${inner}
 
 // Card with a portfolio-style label bar: TITLE on the left, a count on the right.
 function frame(w, h, title, body, right = "") {
+  const pad = w < 600 ? 16 : 24;
   return svg(
     w,
     h,
     title,
-    `<text x="24" y="29" class="t">${esc(title.toUpperCase())}</text>
-${right ? `<text x="${w - 24}" y="29" class="tc" text-anchor="end">${right}</text>` : ""}
+    `<text x="${pad}" y="29" class="t">${esc(title.toUpperCase())}</text>
+${right ? `<text x="${w - pad}" y="29" class="tc" text-anchor="end">${right}</text>` : ""}
 <line x1="0" y1="48" x2="${w}" y2="48" stroke="${T.line}"/>
 ${body}`
   );
@@ -182,9 +183,9 @@ function streakCard(st) {
   return frame(830, 164, "Contributions", body, `SINCE ${st.firstDay.slice(0, 4)}`);
 }
 
-function heatmapCard(weeks, total) {
-  const gap = 3, x0 = 24, y0 = 84;
-  const step = (830 - 48 + gap) / weeks.length, cell = +(step - gap).toFixed(2);
+function heatmapCard(weeks, total, HW = 830, title = "Last 12 months", caption = "CONTRIBUTIONS IN THE LAST YEAR") {
+  const pad = HW < 600 ? 16 : 24, gap = 3, x0 = pad, y0 = 84;
+  const step = (HW - 2 * pad + gap) / weeks.length, cell = +(step - gap).toFixed(2);
   const op = { NONE: 0, FIRST_QUARTILE: 0.18, SECOND_QUARTILE: 0.38, THIRD_QUARTILE: 0.6, FOURTH_QUARTILE: 1 };
   const months = [];
   let lastM = -1, lastW = -9;
@@ -209,14 +210,14 @@ function heatmapCard(weeks, total) {
     .join("\n");
   const ly = Math.round(y0 + 7 * step + 14);
   const legend = [0, 0.18, 0.38, 0.6, 1]
-    .map((o, i) => `<rect x="${830 - 24 - 34 - (5 - i) * 15}" y="${ly - 10}" width="12" height="12" ${o ? `fill="${T.accent}" fill-opacity="${o}"` : `fill="${T.empty}"`}/>`)
+    .map((o, i) => `<rect x="${HW - pad - 34 - (5 - i) * 15}" y="${ly - 10}" width="12" height="12" ${o ? `fill="${T.accent}" fill-opacity="${o}"` : `fill="${T.empty}"`}/>`)
     .join("");
   const body = `${months.join("\n")}
 <g>${cells}</g>
-<text x="${x0}" y="${ly}" class="sub">${fmt(total)} CONTRIBUTIONS IN THE LAST YEAR</text>
-<text x="${830 - 24 - 34 - 5 * 15 - 8}" y="${ly}" class="sub" text-anchor="end">LESS</text>${legend}
-<text x="${830 - 24}" y="${ly}" class="sub" text-anchor="end">MORE</text>`;
-  return frame(830, ly + 22, "Last 12 months", body, `@${esc(USERNAME)}`);
+<text x="${x0}" y="${ly}" class="sub">${fmt(total)} ${caption}</text>
+<text x="${HW - pad - 34 - 5 * 15 - 8}" y="${ly}" class="sub" text-anchor="end">LESS</text>${legend}
+<text x="${HW - pad}" y="${ly}" class="sub" text-anchor="end">MORE</text>`;
+  return frame(HW, ly + 22, title, body, `@${esc(USERNAME)}`);
 }
 
 /* ------------------------------------------------------------------ content */
@@ -342,12 +343,13 @@ ${inner}
 </svg>`;
 }
 
-function labelBarSvg(title, right) {
+function labelBarSvg(title, right, W = 830) {
+  const pad = W < 600 ? 16 : 24;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="40" viewBox="0 0 ${W} 40" role="img" aria-label="${esc(title)}">
 <style>${STYLE()}</style>
 <rect x=".5" y=".5" width="${W - 1}" height="39" fill="${T.bg}" stroke="${T.line}"/>
-<text x="24" y="25" class="t">${esc(title.toUpperCase())}</text>
-<text x="${W - 24}" y="25" class="tc" text-anchor="end">${esc(right)}</text>
+<text x="${pad}" y="25" class="t">${esc(title.toUpperCase())}</text>
+<text x="${W - pad}" y="25" class="tc" text-anchor="end">${esc(right)}</text>
 </svg>`;
 }
 
@@ -411,8 +413,8 @@ function experienceSvg() {
   );
 }
 
-async function capabilitiesSvg() {
-  const cols = 4, rh = 64, cw = W / cols;
+async function capabilitiesSvg(W = 830, cols = 4, rh = 64) {
+  const cw = W / cols;
   const items = CONTENT.capabilities;
   const H = 48 + Math.ceil(items.length / cols) * rh;
   // Icons come from the simple-icons package (installed by the workflow).
@@ -422,7 +424,7 @@ async function capabilitiesSvg() {
   const cells = items
     .map(([name, , abbr], i) => {
       const x = (i % cols) * cw, y = 48 + Math.floor(i / cols) * rh;
-      const ix = x + 24, iy = y + rh / 2 - 10;
+      const ix = x + (W < 600 ? 16 : 24), iy = y + rh / 2 - 10;
       const icon = icons[i]
         ? `<path d="${icons[i]}" transform="translate(${ix} ${iy}) scale(${20 / 24})" fill="${T.muted}" opacity=".6"/>`
         : `<rect x="${ix + 0.5}" y="${iy + 0.5}" width="19" height="19" fill="none" stroke="${T.dim}"/><text x="${ix + 10}" y="${iy + 13.5}" class="ab" text-anchor="middle">${esc(abbr || name.slice(0, 2))}</text>`;
@@ -464,6 +466,208 @@ function contactSvg() {
   .v{font:600 13px ${T.sans};fill:${T.text}}`);
 }
 
+/* ------------------------------------------------------------------ mobile layouts */
+// Phone-width versions (390 wide), shown by the README below 600px so text
+// stays close to its designed size instead of shrinking to ~40%.
+
+const MW = 390;
+
+function wrap(text, max) {
+  const out = [];
+  let line = "";
+  for (const w of text.split(" ")) {
+    if ((line + " " + w).trim().length > max) {
+      out.push(line.trim());
+      line = w;
+    } else line += " " + w;
+  }
+  if (line.trim()) out.push(line.trim());
+  return out;
+}
+
+function heroM() {
+  const H = 170;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${MW}" height="${H}" viewBox="0 0 ${MW} ${H}" role="img" aria-label="Kenji.">
+<style>${FONT_FACE}
+  .e{font:700 9px ${T.sans};letter-spacing:.12em;fill:${T.muted}}
+  .name{font:900 104px ${T.sans};letter-spacing:-.05em;fill:${T.text}}
+</style>
+<defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="${T.line}"/></pattern></defs>
+<rect x=".5" y=".5" width="${MW - 1}" height="${H - 1}" fill="${T.bg}" stroke="${T.line}"/>
+<text x="16" y="24" class="e">SOFTWARE ENGINEER &amp; BUILDER</text>
+<circle cx="${MW - 16 - 70}" cy="20.8" r="2.8" fill="${T.green}"/>
+<text x="${MW - 16}" y="24" class="e" text-anchor="end">AVAILABLE</text>
+<line x1="0" y1="40" x2="${MW}" y2="40" stroke="${T.line}"/>
+<rect x="1" y="41" width="${MW - 2}" height="${H - 42}" fill="url(#dots)"/>
+<text x="14" y="134" class="name">Kenji<tspan fill="${T.accent}">.</tspan></text>
+</svg>`;
+}
+
+function aboutM(commitsThisYear) {
+  const lines = wrap(CONTENT.about.join(" "), 44);
+  const pTop = 48 + 30, pH = lines.length * 23;
+  const gridY = pTop + pH + 6, ch = 88, cw = MW / 2;
+  const H = gridY + ch * 2;
+  const stats = [
+    ["5", "+", "Years experience"],
+    ["10", "+", "Unfinished side projects"],
+    [fmt(commitsThisYear), "", "Commits this year"],
+    ["100", "%", "Model quota used"],
+  ];
+  const cells = stats
+    .map(([n, sup, l], i) => {
+      const x = (i % 2) * cw, y = gridY + Math.floor(i / 2) * ch;
+      const lab = wrap(l.toUpperCase(), 20);
+      return `<text x="${x + 16}" y="${y + 44}" class="num">${n}<tspan class="sup" dy="-12">${sup}</tspan></text>
+${lab.map((t, j) => `<text x="${x + 16}" y="${y + 64 + j * 13}" class="sl">${t}</text>`).join("")}`;
+    })
+    .join("\n");
+  return svg(MW, H, "About", `<text x="16" y="29" class="t">ABOUT</text>
+<text x="${MW - 16}" y="29" class="tc" text-anchor="end">${CONTENT.location}</text>
+<line x1="0" y1="48" x2="${MW}" y2="48" stroke="${T.line}"/>
+${lines.map((l, i) => `<text x="16" y="${pTop + i * 23}" class="p">${esc(l)}</text>`).join("\n")}
+<line x1="0" y1="${gridY}" x2="${MW}" y2="${gridY}" stroke="${T.line}"/>
+<line x1="0" y1="${gridY + ch}" x2="${MW}" y2="${gridY + ch}" stroke="${T.line}"/>
+<line x1="${cw}" y1="${gridY}" x2="${cw}" y2="${H}" stroke="${T.line}"/>
+${cells}`, `
+  .p{font:400 14px ${T.sans};fill:${T.muted}}
+  .num{font:900 34px ${T.sans};letter-spacing:-.05em;fill:${T.text}}
+  .sup{font:900 16px ${T.sans};fill:${T.accent}}
+  .sl{font:600 10px ${T.sans};letter-spacing:.08em;fill:${T.muted}}`);
+}
+
+function workRowM(p, i) {
+  const H = 110;
+  let tx = 16;
+  const tags = p.tags
+    .map((t) => {
+      const label = t.toUpperCase();
+      const w = Math.round(charW(label, 9, 0.12) + 16);
+      const g = `<rect x="${tx + 0.5}" y="78.5" width="${w}" height="19" fill="none" stroke="${T.line}"/><text x="${tx + w / 2}" y="91.5" class="tag" text-anchor="middle">${esc(label)}</text>`;
+      tx += w + 4;
+      return g;
+    })
+    .join("");
+  return svg(MW, H, p.name, `<text x="16" y="30" class="pn">${String(i + 1).padStart(2, "0")}</text>
+<text x="${MW - 60}" y="30" class="yr" text-anchor="end">${p.year}</text>
+<path d="M${MW - 34} 32 l12 -12 M${MW - 31} 20 h9 v9" fill="none" stroke="${T.accent}" stroke-width="1.6"/>
+<text x="16" y="54" class="name">${esc(p.name)}</text>
+<text x="16" y="70" class="desc">${esc(p.desc)}</text>
+${tags}`, `
+  .pn{font:700 11px ${T.sans};letter-spacing:.06em;fill:${T.dim}}
+  .name{font:700 18px ${T.sans};letter-spacing:-.025em;fill:${T.text}}
+  .desc{font:400 12.5px ${T.sans};fill:${T.muted}}
+  .tag{font:700 9px ${T.sans};letter-spacing:.08em;fill:${T.muted}}
+  .yr{font:600 11px ${T.sans};letter-spacing:.04em;fill:${T.dim}}`);
+}
+
+function listM(title, right, rows, rh = 54) {
+  const H = 48 + rows.length * rh;
+  const body = rows
+    .map(([a, b, c], i) => {
+      const y = 48 + i * rh;
+      return `${i ? `<line x1="0" y1="${y}" x2="${MW}" y2="${y}" stroke="${T.line}"/>` : ""}
+${c ? `<text x="16" y="${y + 20}" class="yr">${esc(c.toUpperCase())}</text>` : ""}
+<text x="16" y="${y + (c ? 39 : 24)}" class="name">${esc(a)}</text>
+<text x="${c ? MW - 16 : 16}" y="${y + (c ? 39 : 42)}" class="desc" ${c ? 'text-anchor="end"' : ""}>${esc(b)}</text>`;
+    })
+    .join("\n");
+  return frame(MW, H, title, body, right).replace(
+    "</style>",
+    `.name{font:700 15px ${T.sans};letter-spacing:-.02em;fill:${T.text}}.desc{font:400 12px ${T.sans};fill:${T.muted}}.yr{font:600 10px ${T.sans};letter-spacing:.06em;fill:${T.dim}}</style>`
+  );
+}
+
+function experienceM() {
+  const rh = 72, H = 48 + CONTENT.experience.length * rh;
+  const rows = CONTENT.experience
+    .map(([yr, role, place], i) => {
+      const y = 48 + i * rh;
+      return `${i ? `<line x1="0" y1="${y}" x2="${MW}" y2="${y}" stroke="${T.line}"/>` : ""}
+<text x="16" y="${y + 22}" class="yr">${esc(yr.toUpperCase())}</text>
+<text x="16" y="${y + 42}" class="role">${esc(role)}</text>
+<text x="16" y="${y + 59}" class="place">${esc(place)}</text>`;
+    })
+    .join("\n");
+  return frame(MW, H, "Experience", rows, `${String(CONTENT.experience.length).padStart(2, "0")} ROLES`).replace(
+    "</style>",
+    `.yr{font:600 10px ${T.sans};letter-spacing:.06em;fill:${T.dim}}.role{font:700 15px ${T.sans};letter-spacing:-.01em;fill:${T.text}}.place{font:400 12px ${T.sans};fill:${T.muted}}</style>`
+  );
+}
+
+async function capabilitiesM() {
+  const full = await capabilitiesSvg(MW, 2, 52);
+  return full;
+}
+
+function activityM(data) {
+  const s = data.stats, r = rank(s);
+  const R = 34, C = 2 * Math.PI * R, filled = C * (1 - r.percentile / 100);
+  const rows = [["Total stars", s.stars], ["Commits", s.commits], ["Pull requests", s.prs], ["Issues", s.issues], ["Contributed to", s.contributedTo]];
+  const statsH = 48 + 160;
+  const stats = frame(MW, statsH, "GitHub stats", rows
+    .map(([k, v], i) => `<text x="16" y="${78 + i * 26}" class="lbl">${k}</text><text x="${MW - 136}" y="${78 + i * 26}" class="val" text-anchor="end">${fmt(v)}</text>`)
+    .join("\n") + `
+<line x1="${MW - 116}" y1="64" x2="${MW - 116}" y2="${statsH - 16}" stroke="${T.line}"/>
+<g transform="translate(${MW - 58} 118)">
+  <circle r="${R}" fill="none" stroke="${T.empty}" stroke-width="5"/>
+  <circle r="${R}" fill="none" stroke="${T.accent}" stroke-width="5" stroke-dasharray="${C}" stroke-dashoffset="${C - filled}" transform="rotate(-90)"/>
+  <text y="9" text-anchor="middle" style="font:900 26px ${T.sans};fill:${T.text};letter-spacing:-.04em">${r.level}</text>
+</g>
+<text x="${MW - 58}" y="${statsH - 22}" class="sub" text-anchor="middle">TOP ${Math.round(r.percentile)}%</text>`, "ALL TIME");
+
+  const top = data.langs.slice(0, 6), sum = top.reduce((a, l) => a + l.size, 0) || 1;
+  const shades = [1, 0.8, 0.62, 0.46, 0.32, 0.2];
+  let bx = 16;
+  const langsH = 48 + 30 + 3 * 26 + 10;
+  const langs = frame(MW, langsH, "Top languages", top
+    .map((l, i) => { const w = Math.max((l.size / sum) * (MW - 32), 2); const seg = `<rect x="${bx.toFixed(2)}" y="64" width="${w.toFixed(2)}" height="8" fill="${T.accent}" fill-opacity="${shades[i]}"/>`; bx += w; return seg; })
+    .join("") + top
+    .map((l, i) => { const x = 16 + (i % 2) * 183, y = 100 + Math.floor(i / 2) * 26; return `<rect x="${x}" y="${y - 9}" width="9" height="9" fill="${T.accent}" fill-opacity="${shades[i]}"/><text x="${x + 17}" y="${y}" class="lbl" style="fill:${T.text}">${esc(l.name)}</text><text x="${x + 167}" y="${y}" class="sub" text-anchor="end">${((l.size / sum) * 100).toFixed(1)}%</text>`; })
+    .join(""), "BY SIZE");
+
+  const st = streaks(data.days);
+  const cols = [["Total", fmt(st.total), T.text], ["Longest streak", `${st.longest.length}d`, T.accent], ["Active days", fmt(st.activeDays), T.text]];
+  const cw = MW / 3, contribH = 48 + 76;
+  const contrib = frame(MW, contribH, "Contributions", cols
+    .map(([k, v, c], i) => `${i ? `<line x1="${i * cw}" y1="48" x2="${i * cw}" y2="${contribH}" stroke="${T.line}"/>` : ""}<text x="${i * cw + 16}" y="74" class="lbl" style="font-size:11px">${k}</text><text x="${i * cw + 16}" y="106" class="big" style="font-size:28px;fill:${c}">${v}</text>`)
+    .join(""), `SINCE ${st.firstDay.slice(0, 4)}`);
+
+  const weeks = data.heat.weeks.slice(-22);
+  const sixTotal = weeks.flat().reduce((a, d) => a + d.count, 0);
+  const heat = heatmapCard(weeks, sixTotal, MW, "Last 5 months", "CONTRIBUTIONS");
+  const heatH = +heat.match(/height="(\d+)"/)[1];
+
+  const parts = [[labelBarSvg("Activity", "EVERY 6 HOURS", MW), 0, 0]];
+  let y = 39;
+  for (const [svgStr, h] of [[stats, statsH], [langs, langsH], [contrib, contribH], [heat, heatH]]) {
+    parts.push([svgStr, 0, y]);
+    y += h - 1;
+  }
+  return compose(MW, y + 1, "Activity", parts);
+}
+
+function contactM() {
+  const H = 330;
+  return svg(MW, H, "Let's build together.", `<text x="16" y="29" class="t">CONTACT</text>
+<text x="${MW - 16}" y="29" class="tc" text-anchor="end">OPEN TO WORK</text>
+<line x1="0" y1="48" x2="${MW}" y2="48" stroke="${T.line}"/>
+<text x="16" y="104" class="h">Let's build</text>
+<text x="16" y="146" class="h"><tspan fill="${T.accent}">together.</tspan></text>
+<text x="16" y="176" class="p">Open to freelance projects, full-time roles,</text>
+<text x="16" y="196" class="p">and interesting collaborations.</text>
+<line x1="0" y1="218" x2="${MW}" y2="218" stroke="${T.line}"/>
+<text x="16" y="242" class="t">DIRECT EMAIL</text>
+<text x="16" y="268" class="mail">${esc(CONTENT.email)}</text>
+<line x1="0" y1="284" x2="${MW}" y2="284" stroke="${T.line}"/>
+<circle cx="20" cy="303" r="3" fill="${T.green}"/>
+<text x="30" y="307" class="v">Available · Kalinga, PH · GMT+8</text>`, `
+  .h{font:900 42px ${T.sans};letter-spacing:-.04em;fill:${T.text}}
+  .p{font:400 13px ${T.sans};fill:${T.muted}}
+  .mail{font:800 20px ${T.sans};letter-spacing:-.02em;fill:${T.text}}
+  .v{font:600 12px ${T.sans};fill:${T.text}}`);
+}
+
 /* ------------------------------------------------------------------ hero + footer */
 
 function heroSvg() {
@@ -485,12 +689,12 @@ function heroSvg() {
 </svg>`;
 }
 
-function footerSvg() {
-  const W = 830, H = 140, text = "KENJI VON ASHLEY";
-  const t = (attrs) => `<text x="${W / 2}" y="${H / 2 + 26}" text-anchor="middle" textLength="${W - 48}" lengthAdjust="spacingAndGlyphs" class="f" ${attrs}>${text}</text>`;
+function footerSvg(W = 830, H = 140) {
+  const text = "KENJI VON ASHLEY";
+  const t = (attrs) => `<text x="${W / 2}" y="${(H / 2 + (W / 10.4) * 0.33).toFixed(1)}" text-anchor="middle" textLength="${W - 48}" lengthAdjust="spacingAndGlyphs" class="f" ${attrs}>${text}</text>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Kenji Von Ashley">
 <style>${FONT_FACE}
-  .f{font:900 80px ${T.sans};letter-spacing:-.06em}
+  .f{font:900 ${Math.round(W / 10.4)}px ${T.sans};letter-spacing:-.06em}
 </style>
 <defs>
   <radialGradient id="g" cx="50%" cy="50%" r="45%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
@@ -685,6 +889,23 @@ for (const theme of Object.keys(THEMES)) {
       [hm, 0, y3],
     ]);
   }
+  // Phone layouts
+  const mRows = CONTENT.work.map((p, i) => workRowM(p, i));
+  Object.assign(files, {
+    "hero-m.svg": heroM(),
+    "about-m.svg": aboutM(data.stats.commitsThisYear),
+    "work-1-m.svg": compose(MW, 40 + 110 - 1, CONTENT.work[0].name, [
+      [labelBarSvg("Selected work", `${String(CONTENT.work.length).padStart(2, "0")} PROJECTS`, MW), 0, 0],
+      [mRows[0], 0, 39],
+    ]),
+    "more-m.svg": listM("Also built", `${String(CONTENT.more.length).padStart(2, "0")} PROJECTS`, CONTENT.more),
+    "experience-m.svg": experienceM(),
+    "capabilities-m.svg": await capabilitiesSvg(MW, 2, 52),
+    "activity-m.svg": activityM(data),
+    "contact-m.svg": contactM(),
+    "footer-m.svg": footerSvg(MW, 90),
+  });
+  mRows.slice(1).forEach((r, i) => (files[`work-${i + 2}-m.svg`] = r));
   await Promise.all(Object.entries(files).map(([n, c]) => writeFile(new URL(n.replace(".svg", `-${theme}.svg`), OUT), c)));
   count += Object.keys(files).length;
 }

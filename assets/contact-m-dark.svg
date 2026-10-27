@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="330" viewBox="0 0 390 330" role="img" aria-label="Let&#39;s build together.">
+<style>
+  .t{font:700 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.14em;fill:#c0c0ab}
+  .tc{font:500 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#8a8a7a}
+  .lbl{font:500 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#c0c0ab}
+  .val{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3;letter-spacing:-.01em}
+  .big{font:900 40px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3;letter-spacing:-.05em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a7a}
+  .h{font:900 42px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.04em;fill:#ffffe3}
+  .p{font:400 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#c0c0ab}
+  .mail{font:800 20px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.02em;fill:#ffffe3}
+  .v{font:600 12px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ffffe3}</style>
+<rect x=".5" y=".5" width="389" height="329" fill="#10100e" stroke="#30302b"/>
+<text x="16" y="29" class="t">CONTACT</text>
+<text x="374" y="29" class="tc" text-anchor="end">OPEN TO WORK</text>
+<line x1="0" y1="48" x2="390" y2="48" stroke="#30302b"/>
+<text x="16" y="104" class="h">Let's build</text>
+<text x="16" y="146" class="h"><tspan fill="#ff3800">together.</tspan></text>
+<text x="16" y="176" class="p">Open to freelance projects, full-time roles,</text>
+<text x="16" y="196" class="p">and interesting collaborations.</text>
+<line x1="0" y1="218" x2="390" y2="218" stroke="#30302b"/>
+<text x="16" y="242" class="t">DIRECT EMAIL</text>
+<text x="16" y="268" class="mail">kenjivafe@gmail.com</text>
+<line x1="0" y1="284" x2="390" y2="284" stroke="#30302b"/>
+<circle cx="20" cy="303" r="3" fill="#22c55e"/>
+<text x="30" y="307" class="v">Available · Kalinga, PH · GMT+8</text>
+</svg>

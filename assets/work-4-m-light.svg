@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="110" viewBox="0 0 390 110" role="img" aria-label="RESQ-Link">
+<style>
+  .t{font:700 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.14em;fill:#606055}
+  .tc{font:500 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#8a8a7a}
+  .lbl{font:500 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#606055}
+  .val{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.01em}
+  .big{font:900 40px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.05em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a7a}
+  .pn{font:700 11px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.06em;fill:#8a8a7a}
+  .name{font:700 18px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.025em;fill:#10100e}
+  .desc{font:400 12.5px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#606055}
+  .tag{font:700 9px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#606055}
+  .yr{font:600 11px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.04em;fill:#8a8a7a}</style>
+<rect x=".5" y=".5" width="389" height="109" fill="#ffffe3" stroke="#e8e8cf"/>
+<text x="16" y="30" class="pn">04</text>
+<text x="330" y="30" class="yr" text-anchor="end">2025</text>
+<path d="M356 32 l12 -12 M359 20 h9 v9" fill="none" stroke="#ff3800" stroke-width="1.6"/>
+<text x="16" y="54" class="name">RESQ-Link</text>
+<text x="16" y="70" class="desc">Real-time Emergency Dispatch &amp; Event Response</text>
+<rect x="16.5" y="78.5" width="71" height="19" fill="none" stroke="#e8e8cf"/><text x="51.5" y="91.5" class="tag" text-anchor="middle">REAL-TIME</text><rect x="91.5" y="78.5" width="89" height="19" fill="none" stroke="#e8e8cf"/><text x="135.5" y="91.5" class="tag" text-anchor="middle">EVENT-DRIVEN</text><rect x="184.5" y="78.5" width="59" height="19" fill="none" stroke="#e8e8cf"/><text x="213.5" y="91.5" class="tag" text-anchor="middle">MAPPING</text>
+</svg>
