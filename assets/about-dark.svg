@@ -12,7 +12,7 @@
   .sl{font:600 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#c0c0ab}</style>
 <rect x=".5" y=".5" width="829" height="259" fill="#10100e" stroke="#30302b"/>
 <text x="24" y="29" class="t">ABOUT</text>
-<text x="806" y="29" class="tc" text-anchor="end">KALINGA, PH</text>
+<text x="806" y="29" class="tc" text-anchor="end">DUBAI, UAE</text>
 <line x1="0" y1="48" x2="830" y2="48" stroke="#30302b"/>
 <text x="24" y="92" class="p">I build precise, thoughtful digital products — from</text>
 <text x="24" y="118" class="p">scalable backend architectures to fluid user interfaces.</text>

@@ -65,7 +65,7 @@
 <text x="16" y="29" class="t">TOP LANGUAGES</text>
 <text x="400" y="29" class="tc" text-anchor="end">BY SIZE</text>
 <line x1="0" y1="48" x2="416" y2="48" stroke="#30302b"/>
-<rect x="24.00" y="64" width="238.45" height="8" fill="#ff3800" fill-opacity="1"/><rect x="262.45" y="64" width="81.03" height="8" fill="#ff3800" fill-opacity="0.82"/><rect x="343.49" y="64" width="12.90" height="8" fill="#ff3800" fill-opacity="0.66"/><rect x="356.39" y="64" width="12.63" height="8" fill="#ff3800" fill-opacity="0.52"/><rect x="369.02" y="64" width="10.41" height="8" fill="#ff3800" fill-opacity="0.4"/><rect x="379.43" y="64" width="7.58" height="8" fill="#ff3800" fill-opacity="0.3"/><rect x="387.01" y="64" width="2.63" height="8" fill="#ff3800" fill-opacity="0.22"/><rect x="389.64" y="64" width="2.36" height="8" fill="#ff3800" fill-opacity="0.16"/>
+<rect x="24.00" y="64" width="238.46" height="8" fill="#ff3800" fill-opacity="1"/><rect x="262.46" y="64" width="81.03" height="8" fill="#ff3800" fill-opacity="0.82"/><rect x="343.49" y="64" width="12.90" height="8" fill="#ff3800" fill-opacity="0.66"/><rect x="356.39" y="64" width="12.63" height="8" fill="#ff3800" fill-opacity="0.52"/><rect x="369.02" y="64" width="10.41" height="8" fill="#ff3800" fill-opacity="0.4"/><rect x="379.43" y="64" width="7.58" height="8" fill="#ff3800" fill-opacity="0.3"/><rect x="387.01" y="64" width="2.63" height="8" fill="#ff3800" fill-opacity="0.22"/><rect x="389.64" y="64" width="2.36" height="8" fill="#ff3800" fill-opacity="0.16"/>
 <g>
   <rect x="24" y="97" width="9" height="9" fill="#ff3800" fill-opacity="1"/>
   <text x="42" y="106" class="lbl" style="fill:#ffffe3">TypeScript</text>

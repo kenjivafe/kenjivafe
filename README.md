@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/about-m-light.svg?v=0c09d4d7" /><source media="(prefers-color-scheme: light)" srcset="./assets/about-light.svg?v=daa10e8e" /><source media="(max-width: 600px)" srcset="./assets/about-m-dark.svg?v=2cb7e316" /><img src="./assets/about-dark.svg?v=ec68a81e" width="100%" alt="I build precise, thoughtful digital products — from scalable backend architectures to fluid user interfaces." /></picture>
+  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/about-m-light.svg?v=4321aacb" /><source media="(prefers-color-scheme: light)" srcset="./assets/about-light.svg?v=d3674bc5" /><source media="(max-width: 600px)" srcset="./assets/about-m-dark.svg?v=97bc3ed1" /><img src="./assets/about-dark.svg?v=fef5d277" width="100%" alt="I build precise, thoughtful digital products — from scalable backend architectures to fluid user interfaces." /></picture>
 </p>
 
 <p align="left">
@@ -34,11 +34,11 @@
 </p>
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/activity-m-light.svg?v=2ffa0fdd" /><source media="(prefers-color-scheme: light)" srcset="./assets/activity-light.svg?v=dd3fe4c7" /><source media="(max-width: 600px)" srcset="./assets/activity-m-dark.svg?v=fadc6464" /><img src="./assets/activity-dark.svg?v=da7e8d72" width="100%" alt="GitHub activity" /></picture>
+  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/activity-m-light.svg?v=612ae982" /><source media="(prefers-color-scheme: light)" srcset="./assets/activity-light.svg?v=c211361c" /><source media="(max-width: 600px)" srcset="./assets/activity-m-dark.svg?v=86e547ca" /><img src="./assets/activity-dark.svg?v=be229dec" width="100%" alt="GitHub activity" /></picture>
 </p>
 
 <p align="center">
-  <a href="mailto:kenjivafe@gmail.com"><picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/contact-m-light.svg?v=d0319e18" /><source media="(prefers-color-scheme: light)" srcset="./assets/contact-light.svg?v=1d8e92a3" /><source media="(max-width: 600px)" srcset="./assets/contact-m-dark.svg?v=db0b162e" /><img src="./assets/contact-dark.svg?v=ae94cd47" width="100%" alt="Let's build together. kenjivafe@gmail.com" /></picture></a>
+  <a href="mailto:kenjivafe@gmail.com"><picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/contact-m-light.svg?v=ecab1c1f" /><source media="(prefers-color-scheme: light)" srcset="./assets/contact-light.svg?v=e751d682" /><source media="(max-width: 600px)" srcset="./assets/contact-m-dark.svg?v=24406c71" /><img src="./assets/contact-dark.svg?v=8570476c" width="100%" alt="Let's build together. kenjivafe@gmail.com" /></picture></a>
 </p>
 
 <p align="center">
