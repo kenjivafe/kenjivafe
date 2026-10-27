@@ -365,6 +365,13 @@ ${inner}
 </svg>`;
 }
 
+// Trims the top border so a card stacks flush under the one above it
+// (avoids a doubled 2px line where the two borders would meet).
+function joinTop(str) {
+  const [, w, h] = str.match(/width="([\d.]+)" height="([\d.]+)"/);
+  return str.replace(/width="[\d.]+" height="[\d.]+" viewBox="0 0 [^"]+"/, `width="${w}" height="${+h - 1}" viewBox="0 1 ${w} ${+h - 1}"`);
+}
+
 function labelBarSvg(title, right, W = 830) {
   const pad = W < 600 ? 16 : 24;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="40" viewBox="0 0 ${W} 40" role="img" aria-label="${esc(title)}">
@@ -906,7 +913,7 @@ for (const theme of Object.keys(THEMES)) {
   const files = {
     "hero.svg": heroSvg(),
     "about.svg": aboutSvg(data.stats.commitsThisYear),
-    "more.svg": moreCompact(),
+    "more.svg": joinTop(moreCompact()),
     "experience.svg": experienceSvg(),
     "capabilities.svg": await capabilitiesSvg(),
     "contact.svg": contactSvg(),
@@ -918,7 +925,7 @@ for (const theme of Object.keys(THEMES)) {
     [bar("Selected work", `${String(CONTENT.work.length).padStart(2, "0")} PROJECTS`), 0, 0],
     [workRows[0], 0, 39],
   ]);
-  workRows.slice(1).forEach((r, i) => (files[`work-${i + 2}.svg`] = r));
+  workRows.slice(1).forEach((r, i) => (files[`work-${i + 2}.svg`] = joinTop(r)));
   // Activity: label + stats/languages side by side + contributions + heatmap, as one card
   {
     const st = statsCard(data.stats), lg = langsCard(data.langs);
@@ -942,14 +949,14 @@ for (const theme of Object.keys(THEMES)) {
       [labelBarSvg("Selected work", `${String(CONTENT.work.length).padStart(2, "0")} PROJECTS`, MW), 0, 0],
       [mRows[0], 0, 39],
     ]),
-    "more-m.svg": moreCompact(MW),
+    "more-m.svg": joinTop(moreCompact(MW)),
     "experience-m.svg": experienceM(),
     "capabilities-m.svg": await capabilitiesSvg(MW, 2, 52),
     "activity-m.svg": activityM(data),
     "contact-m.svg": contactM(),
     "footer-m.svg": footerSvg(MW, 90),
   });
-  mRows.slice(1).forEach((r, i) => (files[`work-${i + 2}-m.svg`] = r));
+  mRows.slice(1).forEach((r, i) => (files[`work-${i + 2}-m.svg`] = joinTop(r)));
   await Promise.all(Object.entries(files).map(([n, c]) => writeFile(new URL(n.replace(".svg", `-${theme}.svg`), OUT), c)));
   count += Object.keys(files).length;
 }

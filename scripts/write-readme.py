@@ -8,7 +8,7 @@ def v(file):
     f = pathlib.Path(__file__).resolve().parent.parent / "assets" / file
     return "?v=" + hashlib.sha1(f.read_bytes()).hexdigest()[:8] if f.exists() else ""
 
-def pic(name, alt, width="100%", height=None, mobile=True):
+def pic(name, alt, width="100%", height=None, mobile=True, align=None):
     size = f'height="{height}"' if height else f'width="{width}"'
     a = "./assets/"
     src = []
@@ -17,7 +17,8 @@ def pic(name, alt, width="100%", height=None, mobile=True):
     src.append(f'<source media="(prefers-color-scheme: light)" srcset="{a}{name}-light.svg{v(name + '-light.svg')}" />')
     if mobile:
         src.append(f'<source media="(max-width: 600px)" srcset="{a}{name}-m-dark.svg{v(name + '-m-dark.svg')}" />')
-    return "<picture>" + "".join(src) + f'<img src="{a}{name}-dark.svg{v(name + '-dark.svg')}" {size} alt="{alt}" /></picture>'
+    al = f' align="{align}"' if align else ""
+    return "<picture>" + "".join(src) + f'<img src="{a}{name}-dark.svg{v(name + '-dark.svg')}" {size}{al} alt="{alt}" /></picture>'
 
 link = lambda url, inner: f'<a href="{url}">{inner}</a>'
 blk = lambda *items, align="center": f'<p align="{align}">\n' + "\n".join("  " + i for i in items) + "\n</p>\n"
@@ -37,8 +38,12 @@ out = [
         link("mailto:kenjivafe@gmail.com", pic("btn-email", "Email", height=40, mobile=False)),
         align="left",
     ),
-    blk(*[link(u, pic(f"work-{i + 1}", a)) for i, (u, a) in enumerate(work)]),
-    blk(pic("more", "Also built: Tenantra, Airtime, Perbee, SPUP AdServIS, Doctor Smile, DICT Geofence, Apit Lako")),
+    # Floated (align=left) so the rows and Also built stack flush with no gaps
+    blk(
+        *[link(u, pic(f"work-{i + 1}", a, align="left")) for i, (u, a) in enumerate(work)],
+        link("https://kenjivafe.vercel.app/#work", pic("more", "Also built: Tenantra, Airtime, Perbee, SPUP AdServIS, Doctor Smile, DICT Geofence, Apit Lako", align="left")),
+        '<br clear="all" />',
+    ),
     blk(pic("experience", "Experience")),
     blk(pic("capabilities", "Capabilities")),
     blk(pic("activity", "GitHub activity")),
