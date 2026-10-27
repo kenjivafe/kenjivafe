@@ -288,7 +288,7 @@ function aboutSvg(commitsThisYear) {
     .map(([n, sup, l], i) => {
       const x = split + (i % 2) * cw, y = 48 + Math.floor(i / 2) * ch;
       return `<text x="${x + 28}" y="${y + 62}" class="num">${n}<tspan class="sup" dy="-16">${sup}</tspan></text>
-<text x="${x + 28}" y="${y + 86}" class="t">${l.toUpperCase()}</text>`;
+<text x="${x + 28}" y="${y + 86}" class="sl">${l.toUpperCase()}</text>`;
     })
     .join("\n");
   const body = `${CONTENT.about.map((l, i) => `<text x="24" y="${92 + i * 26}" class="p">${esc(l)}</text>`).join("\n")}
@@ -302,7 +302,8 @@ ${cells}`;
 ${body}`, `
   .p{font:400 14px ${T.sans};fill:${T.muted}}
   .num{font:900 42px ${T.sans};letter-spacing:-.05em;fill:${T.text}}
-  .sup{font:900 20px ${T.sans};fill:${T.accent}}`);
+  .sup{font:900 20px ${T.sans};fill:${T.accent}}
+  .sl{font:600 10px ${T.sans};letter-spacing:.08em;fill:${T.muted}}`);
 }
 
 function buttonSvg(b) {
@@ -338,7 +339,7 @@ function workRowSvg(p, i) {
   const tags = p.tags
     .map((t) => {
       const label = t.toUpperCase();
-      const w = Math.round(charW(label, 9, 0.1) + 14);
+      const w = Math.round(charW(label, 9, 0.12) + 16);
       const g = `<rect x="${tx + 0.5}" y="${H / 2 - 9.5}" width="${w}" height="19" fill="none" stroke="${T.line}"/><text x="${tx + w / 2}" y="${H / 2 + 3.5}" class="tag" text-anchor="middle">${esc(label)}</text>`;
       tx += w + 4;
       return g;
