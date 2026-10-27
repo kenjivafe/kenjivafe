@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="123" viewBox="0 0 830 123" role="img" aria-label="Rigko">
+<style></style>
+<svg x="0" y="0" xmlns="http://www.w3.org/2000/svg" width="830" height="40" viewBox="0 0 830 40" role="img" aria-label="Selected work">
+<style>
+  .t{font:700 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.14em;fill:#606055}
+  .tc{font:500 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#8a8a7a}
+  .lbl{font:500 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#606055}
+  .val{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.01em}
+  .big{font:900 40px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.05em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a7a}</style>
+<rect x=".5" y=".5" width="829" height="39" fill="#ffffe3" stroke="#e8e8cf"/>
+<text x="24" y="25" class="t">SELECTED WORK</text>
+<text x="806" y="25" class="tc" text-anchor="end">04 PROJECTS</text>
+</svg>
+<svg x="0" y="39" xmlns="http://www.w3.org/2000/svg" width="830" height="84" viewBox="0 0 830 84" role="img" aria-label="Rigko">
+<style>
+  .t{font:700 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.14em;fill:#606055}
+  .tc{font:500 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#8a8a7a}
+  .lbl{font:500 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#606055}
+  .val{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.01em}
+  .big{font:900 40px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.05em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a7a}
+  .pn{font:700 11px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.06em;fill:#8a8a7a}
+  .name{font:700 18px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.025em;fill:#10100e}
+  .desc{font:400 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#606055}
+  .tag{font:700 9px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#606055}
+  .yr{font:600 11px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.04em;fill:#8a8a7a}</style>
+<rect x=".5" y=".5" width="829" height="83" fill="#ffffe3" stroke="#e8e8cf"/>
+<line x1="44" y1="0" x2="44" y2="84" stroke="#e8e8cf"/>
+<text x="22" y="46" class="pn" text-anchor="middle">01</text>
+<text x="76" y="38" class="name">Rigko</text>
+<text x="76" y="58" class="desc">Custom PC Configuration &amp; Logistics SaaS</text>
+<line x1="420" y1="0" x2="420" y2="84" stroke="#e8e8cf"/>
+<rect x="440.5" y="32.5" width="59" height="19" fill="none" stroke="#e8e8cf"/><text x="469.5" y="45.5" class="tag" text-anchor="middle">NEXT.JS</text><rect x="503.5" y="32.5" width="96" height="19" fill="none" stroke="#e8e8cf"/><text x="551" y="45.5" class="tag" text-anchor="middle">SYSTEM DESIGN</text><rect x="603.5" y="32.5" width="77" height="19" fill="none" stroke="#e8e8cf"/><text x="641.5" y="45.5" class="tag" text-anchor="middle">E-COMMERCE</text>
+<text x="750" y="46" class="yr" text-anchor="end">2026</text>
+<line x1="770" y1="0" x2="770" y2="84" stroke="#e8e8cf"/>
+<path d="M794 48 l12 -12 M797 36 h9 v9" fill="none" stroke="#ff3800" stroke-width="1.6"/>
+</svg>
+</svg>

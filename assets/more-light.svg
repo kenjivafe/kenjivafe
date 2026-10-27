@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="272" viewBox="0 0 830 272" role="img" aria-label="Also built">
+<style>
+  .t{font:700 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.14em;fill:#606055}
+  .tc{font:500 10px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:.08em;fill:#8a8a7a}
+  .lbl{font:500 13px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#606055}
+  .val{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.01em}
+  .big{font:900 40px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.05em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a7a}.name{font:700 15px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.02em;fill:#10100e}.desc{font:400 12px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#606055}</style>
+<rect x=".5" y=".5" width="829" height="271" fill="#ffffe3" stroke="#e8e8cf"/>
+<text x="24" y="29" class="t">ALSO BUILT</text>
+<text x="806" y="29" class="tc" text-anchor="end">07 PROJECTS</text>
+<line x1="0" y1="48" x2="830" y2="48" stroke="#e8e8cf"/>
+<line x1="415" y1="48" x2="415" y2="272" stroke="#e8e8cf"/><line x1="0" y1="104" x2="830" y2="104" stroke="#e8e8cf"/><line x1="0" y1="160" x2="830" y2="160" stroke="#e8e8cf"/><line x1="0" y1="216" x2="830" y2="216" stroke="#e8e8cf"/>
+<text x="24" y="74" class="name">Tenantra</text><text x="24" y="92" class="desc">Real estate management</text>
+<text x="439" y="74" class="name">Airtime</text><text x="439" y="92" class="desc">Premiere &amp; airing countdowns</text>
+<text x="24" y="130" class="name">Perbee</text><text x="24" y="148" class="desc">AI personal best tracker</text>
+<text x="439" y="130" class="name">SPUP AdServIS</text><text x="439" y="148" class="desc">Administrative services system</text>
+<text x="24" y="186" class="name">Doctor Smile</text><text x="24" y="204" class="desc">Dental appointment system</text>
+<text x="439" y="186" class="name">DICT Geofence</text><text x="439" y="204" class="desc">Geofenced attendance</text>
+<text x="24" y="242" class="name">Apit Lako</text><text x="24" y="260" class="desc">Mobile marketplace</text>
+</svg>

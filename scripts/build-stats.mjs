@@ -13,14 +13,14 @@ const MOCK = process.argv.includes("--mock");
 
 /* ------------------------------------------------------------------ theme */
 
-// Matches the portfolio's dark theme (kenjivafe.vercel.app)
+// Matches the portfolio's two themes (kenjivafe.vercel.app). Every card is
+// rendered once per theme; the README swaps them with <picture>.
+const THEMES = {
+  dark: { bg: "#10100e", line: "#30302b", empty: "#22221e", text: "#ffffe3", muted: "#c0c0ab", dim: "#8a8a7a" },
+  light: { bg: "#ffffe3", line: "#e8e8cf", empty: "#ececd2", text: "#10100e", muted: "#606055", dim: "#8a8a7a" },
+};
 const T = {
-  bg: "#10100e",
-  line: "#30302b",
-  empty: "#22221e",
-  text: "#ffffe3",
-  muted: "#c0c0ab",
-  dim: "#8a8a7a",
+  ...THEMES.dark,
   accent: "#ff3800",
   green: "#22c55e",
   sans: "Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif",
@@ -49,7 +49,7 @@ const fmt = (n) => n.toLocaleString("en-US");
 const fmtDate = (d) =>
   new Date(d + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 
-const STYLE = `${FONT_FACE}
+const STYLE = () => `${FONT_FACE}
   .t{font:700 10px ${T.sans};letter-spacing:.14em;fill:${T.muted}}
   .tc{font:500 10px ${T.sans};letter-spacing:.08em;fill:${T.dim}}
   .lbl{font:500 13px ${T.sans};fill:${T.muted}}
@@ -59,7 +59,7 @@ const STYLE = `${FONT_FACE}
 
 function svg(w, h, label, inner, extraStyle = "") {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}">
-<style>${STYLE}${extraStyle}</style>
+<style>${STYLE()}${extraStyle}</style>
 <rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" fill="${T.bg}" stroke="${T.line}"/>
 ${inner}
 </svg>`;
@@ -130,14 +130,14 @@ function statsCard(s) {
   <text y="10" text-anchor="middle" style="font:900 32px ${T.sans};fill:${T.text};letter-spacing:-.04em">${r.level}</text>
 </g>
 <text x="339" y="198" class="sub" text-anchor="middle">TOP ${r.percentile < 1 ? r.percentile.toFixed(1) : Math.round(r.percentile)}%</text>`;
-  return frame(410, 220, "GitHub stats", body, "ALL TIME");
+  return frame(415, 220, "GitHub stats", body, "ALL TIME");
 }
 
 function langsCard(langs) {
   const top = langs.slice(0, 8);
   const sum = top.reduce((a, l) => a + l.size, 0) || 1;
   const shades = [1, 0.82, 0.66, 0.52, 0.4, 0.3, 0.22, 0.16];
-  const W = 362;
+  const W = 368;
   let x = 24;
   const bar = top
     .map((l, i) => {
@@ -150,15 +150,15 @@ function langsCard(langs) {
   const list = top
     .map((l, i) => {
       const col = i % 2, row = Math.floor(i / 2);
-      const lx = 24 + col * 190, ly = 106 + row * 28;
+      const lx = 24 + col * 193, ly = 106 + row * 28;
       return `<g>
   <rect x="${lx}" y="${ly - 9}" width="9" height="9" fill="${T.accent}" fill-opacity="${shades[i]}"/>
   <text x="${lx + 18}" y="${ly}" class="lbl" style="fill:${T.text}">${esc(l.name)}</text>
-  <text x="${lx + 172}" y="${ly}" class="sub" text-anchor="end">${((l.size / sum) * 100).toFixed(1)}%</text>
+  <text x="${lx + 175}" y="${ly}" class="sub" text-anchor="end">${((l.size / sum) * 100).toFixed(1)}%</text>
 </g>`;
     })
     .join("\n");
-  return frame(410, 220, "Top languages", bar + "\n" + list, "BY SIZE");
+  return frame(416, 220, "Top languages", bar + "\n" + list, "BY SIZE");
 }
 
 function streakCard(st) {
@@ -264,9 +264,9 @@ const CONTENT = {
   ],
   email: "kenjivafe@gmail.com",
   links: [
-    { id: "portfolio", label: "View Portfolio", primary: true, logo: true },
-    { id: "linkedin", label: "LinkedIn" },
-    { id: "email", label: "Email" },
+    { id: "portfolio", label: "View Portfolio", primary: true, icon: "logo" },
+    { id: "linkedin", label: "LinkedIn", icon: "linkedin" },
+    { id: "email", label: "Email", icon: "mail" },
   ],
 };
 
@@ -306,25 +306,45 @@ ${body}`, `
   .sl{font:600 10px ${T.sans};letter-spacing:.08em;fill:${T.muted}}`);
 }
 
+const LOGO = () => `<polygon fill="#10100E" points="629.37 527.12 549.44 386.65 527.73 415 527.73 527.12 0 527.12 0 0 527.73 0 527.73 134.24 629.11 0 845.42 0 666.04 234.3 834.93 527.12 629.37 527.12"/><polygon fill="#FFFFE3" points="765.68 487.12 652.63 487.12 554.36 314.42 487.73 401.44 487.73 487.12 40 487.12 40 40 487.73 40 487.73 253.57 649.03 40 764.42 40 618.06 231.17 765.68 487.12"/><circle fill="${T.accent}" cx="263.57" cy="263.56" r="156.57"/>`;
+
+// 16x16 line icons drawn in the card style (1.5px strokes, square caps)
+const ICONS = {
+  logo: () => `<g transform="translate(0 2.5) scale(0.0265)">${LOGO()}</g>`,
+  linkedin: (c) => `<g fill="none" stroke="${c}" stroke-width="1.5"><rect x=".75" y=".75" width="14.5" height="14.5"/><path d="M4.5 7v5M8 12V7m0 2.2c0-1.3.9-2.2 2-2.2s1.8.8 1.8 2.2V12"/></g><rect x="3.8" y="3.6" width="1.5" height="1.5" fill="${c}"/>`,
+  mail: (c) => `<g fill="none" stroke="${c}" stroke-width="1.5"><rect x=".75" y="2.75" width="14.5" height="10.5"/><path d="M1 3.5l7 5.5 7-5.5"/></g>`,
+};
+
 function buttonSvg(b) {
   const label = b.label.toUpperCase() + (b.primary ? "  ↗" : "");
-  const logoW = b.logo ? 30 : 0;
-  const w = Math.round(charW(label, 11, 0.12) + 44 + logoW), h = 40;
   const fg = b.primary ? T.bg : T.muted;
-  const logo = b.logo
-    ? `<g transform="translate(22 13) scale(0.0265)"><polygon fill="${T.bg}" points="629.37 527.12 549.44 386.65 527.73 415 527.73 527.12 0 527.12 0 0 527.73 0 527.73 134.24 629.11 0 845.42 0 666.04 234.3 834.93 527.12 629.37 527.12"/><polygon fill="${T.text}" points="765.68 487.12 652.63 487.12 554.36 314.42 487.73 401.44 487.73 487.12 40 487.12 40 40 487.73 40 487.73 253.57 649.03 40 764.42 40 618.06 231.17 765.68 487.12"/><circle fill="${T.accent}" cx="263.57" cy="263.56" r="156.57"/></g>`
-    : "";
+  const iconW = b.icon ? (b.icon === "logo" ? 26 : 16) + 10 : 0;
+  const textW = charW(label, 11, 0.12);
+  const w = Math.round(textW + iconW + 44), h = 40;
+  const icon = b.icon ? `<g transform="translate(22 12)">${ICONS[b.icon](fg)}</g>` : "";
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(b.label)}">
 <style>${FONT_FACE}.b{font:700 11px ${T.sans};letter-spacing:.12em;fill:${fg}}</style>
 <rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" fill="${b.primary ? T.text : T.bg}" stroke="${b.primary ? T.text : T.line}"/>
-${logo}
-<text x="${(w + logoW) / 2}" y="24.5" class="b" text-anchor="middle">${esc(label)}</text>
+${icon}
+<text x="${22 + iconW}" y="24.5" class="b">${esc(label)}</text>
+</svg>`;
+}
+
+// Stacks finished cards into one SVG (shared borders overlap by 1px).
+// parts: [svgString, x, y]
+function compose(w, h, label, parts) {
+  const inner = parts
+    .map(([str, x, y]) => str.replace(FONT_FACE, "").replace("<svg ", `<svg x="${x}" y="${y}" `))
+    .join("\n");
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}">
+<style>${FONT_FACE}</style>
+${inner}
 </svg>`;
 }
 
 function labelBarSvg(title, right) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="40" viewBox="0 0 ${W} 40" role="img" aria-label="${esc(title)}">
-<style>${STYLE}</style>
+<style>${STYLE()}</style>
 <rect x=".5" y=".5" width="${W - 1}" height="39" fill="${T.bg}" stroke="${T.line}"/>
 <text x="24" y="25" class="t">${esc(title.toUpperCase())}</text>
 <text x="${W - 24}" y="25" class="tc" text-anchor="end">${esc(right)}</text>
@@ -476,7 +496,7 @@ function footerSvg() {
   <radialGradient id="g" cx="50%" cy="50%" r="45%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
   <mask id="m"><rect width="${W}" height="${H}" fill="url(#g)"/></mask>
 </defs>
-<rect width="${W}" height="${H}" fill="${T.bg}"/>
+<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" fill="${T.bg}" stroke="${T.line}"/>
 ${t(`fill="${T.empty}"`)}
 <g mask="url(#m)">${t(`fill="${T.accent}"`)}</g>
 </svg>`;
@@ -630,25 +650,42 @@ if (!MOCK && !TOKEN) {
 }
 const data = MOCK ? mockData() : await fetchAll();
 await mkdir(OUT, { recursive: true });
-const files = {
-  "hero.svg": heroSvg(),
-  "about.svg": aboutSvg(data.stats.commitsThisYear),
-  "work.svg": labelBarSvg("Selected work", `${String(CONTENT.work.length).padStart(2, "0")} PROJECTS`),
-  "more.svg": moreSvg(),
-  "experience.svg": experienceSvg(),
-  "capabilities.svg": await capabilitiesSvg(),
-  "activity.svg": labelBarSvg("Activity", "UPDATED EVERY 6 HOURS"),
-  "contact.svg": contactSvg(),
-};
-CONTENT.links.forEach((b) => (files[`btn-${b.id}.svg`] = buttonSvg(b)));
-CONTENT.work.forEach((p, i) => (files[`work-${i + 1}.svg`] = workRowSvg(p, i)));
-await Promise.all([
-  ...Object.entries(files).map(([n, c]) => writeFile(new URL(n, OUT), c)),
-  writeFile(new URL("hero.svg", OUT), heroSvg()),
-  writeFile(new URL("footer.svg", OUT), footerSvg()),
-  writeFile(new URL("stats.svg", OUT), statsCard(data.stats)),
-  writeFile(new URL("languages.svg", OUT), langsCard(data.langs)),
-  writeFile(new URL("streak.svg", OUT), streakCard(streaks(data.days))),
-  writeFile(new URL("heatmap.svg", OUT), heatmapCard(data.heat.weeks, data.heat.total)),
-]);
-console.log(`Wrote ${Object.keys(files).length + 5} SVGs` + (FONT_FACE ? " with Satoshi" : " (system fonts)"), MOCK ? "(mock data)" : "");
+let count = 0;
+for (const theme of Object.keys(THEMES)) {
+  Object.assign(T, THEMES[theme]);
+  const bar = (t, r) => labelBarSvg(t, r);
+  const workRows = CONTENT.work.map((p, i) => workRowSvg(p, i));
+  const files = {
+    "hero.svg": heroSvg(),
+    "about.svg": aboutSvg(data.stats.commitsThisYear),
+    "more.svg": moreSvg(),
+    "experience.svg": experienceSvg(),
+    "capabilities.svg": await capabilitiesSvg(),
+    "contact.svg": contactSvg(),
+    "footer.svg": footerSvg(),
+  };
+  CONTENT.links.forEach((b) => (files[`btn-${b.id}.svg`] = buttonSvg(b)));
+  // First work row carries the section label so the list reads as one block
+  files["work-1.svg"] = compose(W, 40 + 84 - 1, CONTENT.work[0].name, [
+    [bar("Selected work", `${String(CONTENT.work.length).padStart(2, "0")} PROJECTS`), 0, 0],
+    [workRows[0], 0, 39],
+  ]);
+  workRows.slice(1).forEach((r, i) => (files[`work-${i + 2}.svg`] = r));
+  // Activity: label + stats/languages side by side + contributions + heatmap, as one card
+  {
+    const st = statsCard(data.stats), lg = langsCard(data.langs);
+    const sk = streakCard(streaks(data.days)), hm = heatmapCard(data.heat.weeks, data.heat.total);
+    const hmH = +hm.match(/height="(\d+)"/)[1];
+    const y1 = 39, y2 = y1 + 220 - 1, y3 = y2 + 164 - 1;
+    files["activity.svg"] = compose(W, y3 + hmH, "Activity", [
+      [bar("Activity", "UPDATED EVERY 6 HOURS"), 0, 0],
+      [st, 0, y1],
+      [lg, 414, y1],
+      [sk, 0, y2],
+      [hm, 0, y3],
+    ]);
+  }
+  await Promise.all(Object.entries(files).map(([n, c]) => writeFile(new URL(n.replace(".svg", `-${theme}.svg`), OUT), c)));
+  count += Object.keys(files).length;
+}
+console.log(`Wrote ${count} SVGs` + (FONT_FACE ? " with Satoshi" : " (system fonts)"), MOCK ? "(mock data)" : "");
