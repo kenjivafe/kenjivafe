@@ -247,6 +247,7 @@ const CONTENT = {
     ["Apit Lako", "Mobile marketplace"],
   ],
   experience: [
+    ["2026 — Now", "Web Developer", "Luxury Performance"],
     ["2025 — Now", "UI/UX and Frontend Developer", "RESQ-Link"],
     ["2025 — Now", "Founder and Lead Developer", "Northernware"],
     ["2024 — Now", "Apprentice", "Hackthenorth.ph"],
