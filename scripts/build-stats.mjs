@@ -234,15 +234,15 @@ function footerSvg() {
   const t = (attrs) => `<text x="${W / 2}" y="${H / 2 + 26}" text-anchor="middle" textLength="${W - 48}" lengthAdjust="spacingAndGlyphs" class="f" ${attrs}>${text}</text>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Kenji Von Ashley">
 <style>${FONT_FACE}
-  .f{font:900 80px ${T.sans};letter-spacing:-.06em;fill:none;stroke-width:1.5}
+  .f{font:900 80px ${T.sans};letter-spacing:-.06em}
 </style>
 <defs>
   <radialGradient id="g" cx="50%" cy="50%" r="45%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
   <mask id="m"><rect width="${W}" height="${H}" fill="url(#g)"/></mask>
 </defs>
 <rect width="${W}" height="${H}" fill="${T.bg}"/>
-${t(`stroke="${T.line}"`)}
-<g mask="url(#m)">${t(`stroke="${T.accent}" style="fill:${T.accent};fill-opacity:.9"`)}</g>
+${t(`fill="${T.empty}"`)}
+<g mask="url(#m)">${t(`fill="${T.accent}"`)}</g>
 </svg>`;
 }
 
