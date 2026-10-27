@@ -230,7 +230,7 @@ const CONTENT = {
     "Focused on crafting software that feels effortless",
     "and intentional.",
   ],
-  location: "KALINGA, PH",
+  location: "DUBAI, UAE",
   work: [
     { name: "Rigko", logo: "rigko", desc: "Custom PC Configuration & Logistics SaaS", tags: ["Next.js", "System Design", "E-commerce"], year: 2026, url: "https://rigko.com" },
     { name: "Gymcentrix", logo: "gymcentrix", desc: "Enterprise Gym Management & Analytics Platform", tags: ["SaaS", "PostgreSQL", "Real-time"], year: 2026, url: "https://gymcentrix.vercel.app" },
@@ -496,9 +496,9 @@ function contactSvg() {
 <text x="${split + 24}" y="122" class="mail">${esc(CONTENT.email)}</text>
 <line x1="${split}" y1="160" x2="${W}" y2="160" stroke="${T.line}"/>
 <text x="${split + 24}" y="196" class="t">BASED IN</text>
-<text x="${split + 24}" y="220" class="v">Kalinga, Philippines</text>
+<text x="${split + 24}" y="220" class="v">Dubai, UAE</text>
 <text x="${split + 200}" y="196" class="t">TIMEZONE</text>
-<text x="${split + 200}" y="220" class="v">GMT+8</text>
+<text x="${split + 200}" y="220" class="v">GMT+4</text>
 <text x="${split + 24}" y="262" class="t">STATUS</text>
 <circle cx="${split + 28}" cy="281" r="3" fill="${T.green}"/>
 <text x="${split + 40}" y="285" class="v">Available for new work</text>`, `
@@ -705,7 +705,7 @@ function contactM() {
 <text x="16" y="268" class="mail">${esc(CONTENT.email)}</text>
 <line x1="0" y1="284" x2="${MW}" y2="284" stroke="${T.line}"/>
 <circle cx="20" cy="303" r="3" fill="${T.green}"/>
-<text x="30" y="307" class="v">Available · Kalinga, PH · GMT+8</text>`, `
+<text x="30" y="307" class="v">Available · Dubai, UAE · GMT+4</text>`, `
   .h{font:900 42px ${T.sans};letter-spacing:-.04em;fill:${T.text}}
   .p{font:400 13px ${T.sans};fill:${T.muted}}
   .mail{font:800 20px ${T.sans};letter-spacing:-.02em;fill:${T.text}}
