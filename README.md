@@ -21,8 +21,8 @@
   <a href="https://resq-link-kappa.vercel.app"><picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/work-4-m-light.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/work-4-light.svg" /><source media="(max-width: 600px)" srcset="./assets/work-4-m-dark.svg" /><img src="./assets/work-4-dark.svg" width="100%" alt="RESQ-Link — Real-time Emergency Dispatch & Event Response" /></picture></a>
 </p>
 
-<p align="left">
-  <a href="https://github.com/kenjivafe/kenjivafe/blob/main/PROJECTS.md"><picture><source media="(prefers-color-scheme: light)" srcset="./assets/btn-more-light.svg" /><img src="./assets/btn-more-dark.svg" height="40" alt="Also built — 7 more projects" /></picture></a>
+<p align="center">
+  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/more-m-light.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/more-light.svg" /><source media="(max-width: 600px)" srcset="./assets/more-m-dark.svg" /><img src="./assets/more-dark.svg" width="100%" alt="Also built: Tenantra, Airtime, Perbee, SPUP AdServIS, Doctor Smile, DICT Geofence, Apit Lako" /></picture>
 </p>
 
 <p align="center">
