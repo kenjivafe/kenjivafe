@@ -1,0 +1,1 @@
+<p><a href="https://x.com"><img align="left" src="./assets/work-2-dark.svg" width="100%" /></a><a href="https://y.com"><picture><source media="(max-width: 600px)" srcset="./assets/work-2-m-dark.svg" /><img align="left" src="./assets/work-3-dark.svg" width="100%" /></picture></a></p>
