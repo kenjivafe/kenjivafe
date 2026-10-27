@@ -247,8 +247,6 @@ const CONTENT = {
     ["Apit Lako", "Mobile marketplace"],
   ],
   experience: [
-    ["2026 — Now", "Founder and Lead Developer", "Rigko"],
-    ["2026 — Now", "Backend and API Developer", "Grit Digital Performance"],
     ["2025 — Now", "UI/UX and Frontend Developer", "RESQ-Link"],
     ["2025 — Now", "Founder and Lead Developer", "Northernware"],
     ["2024 — Now", "Apprentice", "Hackthenorth.ph"],
@@ -313,6 +311,7 @@ const LOGO = () => `<polygon fill="#10100E" points="629.37 527.12 549.44 386.65 
 const ICONS = {
   logo: () => `<g transform="translate(0 2.5) scale(0.0265)">${LOGO()}</g>`,
   linkedin: (c) => `<g fill="none" stroke="${c}" stroke-width="1.5"><rect x=".75" y=".75" width="14.5" height="14.5"/><path d="M4.5 7v5M8 12V7m0 2.2c0-1.3.9-2.2 2-2.2s1.8.8 1.8 2.2V12"/></g><rect x="3.8" y="3.6" width="1.5" height="1.5" fill="${c}"/>`,
+  plus: () => `<path d="M3 8h10M8 3v10" stroke="${T.accent}" stroke-width="1.6"/>`,
   mail: (c) => `<g fill="none" stroke="${c}" stroke-width="1.5"><rect x=".75" y="2.75" width="14.5" height="10.5"/><path d="M1 3.5l7 5.5 7-5.5"/></g>`,
 };
 
@@ -341,6 +340,14 @@ function compose(w, h, label, parts) {
 <style>${FONT_FACE}</style>
 ${inner}
 </svg>`;
+}
+
+// Drops a card's 48px label bar (keeps the divider as its top border) so the
+// list can sit under a <details> summary.
+function cropHeader(str) {
+  const [, w, h] = str.match(/width="([\d.]+)" height="([\d.]+)"/);
+  const nh = +h - 47.5;
+  return str.replace(/width="[\d.]+" height="[\d.]+" viewBox="[^"]+"/, `width="${w}" height="${nh}" viewBox="0 47.5 ${w} ${nh}"`);
 }
 
 function labelBarSvg(title, right, W = 830) {
@@ -862,7 +869,8 @@ for (const theme of Object.keys(THEMES)) {
   const files = {
     "hero.svg": heroSvg(),
     "about.svg": aboutSvg(data.stats.commitsThisYear),
-    "more.svg": moreSvg(),
+    "more.svg": cropHeader(moreSvg()),
+    "more-summary.svg": buttonSvg({ label: `Also built · ${CONTENT.more.length} more projects`, icon: "plus" }),
     "experience.svg": experienceSvg(),
     "capabilities.svg": await capabilitiesSvg(),
     "contact.svg": contactSvg(),
@@ -898,7 +906,7 @@ for (const theme of Object.keys(THEMES)) {
       [labelBarSvg("Selected work", `${String(CONTENT.work.length).padStart(2, "0")} PROJECTS`, MW), 0, 0],
       [mRows[0], 0, 39],
     ]),
-    "more-m.svg": listM("Also built", `${String(CONTENT.more.length).padStart(2, "0")} PROJECTS`, CONTENT.more),
+    "more-m.svg": cropHeader(listM("Also built", `${String(CONTENT.more.length).padStart(2, "0")} PROJECTS`, CONTENT.more)),
     "experience-m.svg": experienceM(),
     "capabilities-m.svg": await capabilitiesSvg(MW, 2, 52),
     "activity-m.svg": activityM(data),

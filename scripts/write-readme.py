@@ -30,7 +30,7 @@ out = [
         align="left",
     ),
     blk(*[link(u, pic(f"work-{i + 1}", a)) for i, (u, a) in enumerate(work)]),
-    blk(pic("more", "Also built")),
+    "<details>\n<summary>" + pic("more-summary", "Also built — click to expand", height=40, mobile=False) + "</summary>\n\n" + blk(pic("more", "Also built")) + "</details>\n",
     blk(pic("experience", "Experience")),
     blk(pic("capabilities", "Capabilities")),
     blk(pic("activity", "GitHub activity")),
