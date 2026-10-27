@@ -1,15 +1,23 @@
 # Writes README.md. Each card is a <picture> that picks light/dark (GitHub theme)
 # and desktop/phone (viewport under 600px) versions from ./assets.
+import hashlib, pathlib
+
+# Cache-busting: each image URL carries a hash of its file, so GitHub shows
+# a fresh card as soon as it changes instead of a cached copy.
+def v(file):
+    f = pathlib.Path(__file__).resolve().parent.parent / "assets" / file
+    return "?v=" + hashlib.sha1(f.read_bytes()).hexdigest()[:8] if f.exists() else ""
+
 def pic(name, alt, width="100%", height=None, mobile=True):
     size = f'height="{height}"' if height else f'width="{width}"'
     a = "./assets/"
     src = []
     if mobile:
-        src.append(f'<source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="{a}{name}-m-light.svg" />')
-    src.append(f'<source media="(prefers-color-scheme: light)" srcset="{a}{name}-light.svg" />')
+        src.append(f'<source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="{a}{name}-m-light.svg{v(name + '-m-light.svg')}" />')
+    src.append(f'<source media="(prefers-color-scheme: light)" srcset="{a}{name}-light.svg{v(name + '-light.svg')}" />')
     if mobile:
-        src.append(f'<source media="(max-width: 600px)" srcset="{a}{name}-m-dark.svg" />')
-    return "<picture>" + "".join(src) + f'<img src="{a}{name}-dark.svg" {size} alt="{alt}" /></picture>'
+        src.append(f'<source media="(max-width: 600px)" srcset="{a}{name}-m-dark.svg{v(name + '-m-dark.svg')}" />')
+    return "<picture>" + "".join(src) + f'<img src="{a}{name}-dark.svg{v(name + '-dark.svg')}" {size} alt="{alt}" /></picture>'
 
 link = lambda url, inner: f'<a href="{url}">{inner}</a>'
 blk = lambda *items, align="center": f'<p align="{align}">\n' + "\n".join("  " + i for i in items) + "\n</p>\n"
