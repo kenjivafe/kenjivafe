@@ -239,7 +239,7 @@ const CONTENT = {
   ],
   more: [
     ["Tenantra", "Real estate management", "tenantra"],
-    ["Airtime", "Premiere & airing countdowns", null],
+    ["Airtime", "Premiere & airing countdowns", "airtime"],
     ["Perbee", "AI personal best tracker", "perbee"],
     ["SPUP AdServIS", "Administrative services system", "spup"],
     ["Doctor Smile", "Dental appointment system", "doctor-smile"],
