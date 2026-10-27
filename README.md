@@ -110,17 +110,6 @@
 
 <br />
 
-### Writing
-
-| | |
-| :-- | :-- |
-| <sub>DESIGN · MAR 2025</sub> | [Design Systems for Developers: Building UI that scales with your codebase](https://kenjivafe.vercel.app/writing/design-systems-for-developers) |
-| <sub>BACKEND · FEB 2025</sub> | [The quest for sub-100ms latency in distributed systems](https://kenjivafe.vercel.app/writing/sub-100ms-latency) |
-| <sub>DATABASE · JAN 2025</sub> | [When PostgreSQL isn't enough: Moving to specialized datastores](https://kenjivafe.vercel.app/writing/postgresql-to-specialized-datastores) |
-| <sub>SAAS · DEC 2024</sub> | [Building Multi-tenant SaaS: Security, Isolation, and the Data Trap](https://kenjivafe.vercel.app/writing/multi-tenant-saas) |
-
-<br />
-
 ### Activity
 
 <p align="center">
