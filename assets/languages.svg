@@ -11,45 +11,45 @@
 <text x="24" y="34" class="t"><tspan class="n">02</tspan>  TOP LANGUAGES</text>
 
 <line x1="24" y1="48" x2="386" y2="48" stroke="#1f1f1f"/>
-<rect x="24.00" y="64" width="179.80" height="8" fill="#ff3800" fill-opacity="1"/><rect x="203.80" y="64" width="59.93" height="8" fill="#ff3800" fill-opacity="0.82"/><rect x="263.74" y="64" width="43.95" height="8" fill="#ff3800" fill-opacity="0.66"/><rect x="307.69" y="64" width="31.96" height="8" fill="#ff3800" fill-opacity="0.52"/><rect x="339.65" y="64" width="23.97" height="8" fill="#ff3800" fill-opacity="0.4"/><rect x="363.62" y="64" width="11.99" height="8" fill="#ff3800" fill-opacity="0.3"/><rect x="375.61" y="64" width="7.99" height="8" fill="#ff3800" fill-opacity="0.22"/><rect x="383.60" y="64" width="2.40" height="8" fill="#ff3800" fill-opacity="0.16"/>
+<rect x="24.00" y="64" width="235.76" height="8" fill="#ff3800" fill-opacity="1"/><rect x="259.76" y="64" width="80.12" height="8" fill="#ff3800" fill-opacity="0.82"/><rect x="339.88" y="64" width="12.49" height="8" fill="#ff3800" fill-opacity="0.66"/><rect x="352.37" y="64" width="10.91" height="8" fill="#ff3800" fill-opacity="0.52"/><rect x="363.28" y="64" width="10.30" height="8" fill="#ff3800" fill-opacity="0.4"/><rect x="373.57" y="64" width="7.49" height="8" fill="#ff3800" fill-opacity="0.3"/><rect x="381.06" y="64" width="2.61" height="8" fill="#ff3800" fill-opacity="0.22"/><rect x="383.67" y="64" width="2.33" height="8" fill="#ff3800" fill-opacity="0.16"/>
 <g>
   <rect x="24" y="97" width="9" height="9" fill="#ff3800" fill-opacity="1"/>
   <text x="42" y="106" class="lbl" style="fill:#ededed">TypeScript</text>
-  <text x="196" y="106" class="sub" text-anchor="end">49.7%</text>
+  <text x="196" y="106" class="sub" text-anchor="end">65.1%</text>
 </g>
 <g>
   <rect x="214" y="97" width="9" height="9" fill="#ff3800" fill-opacity="0.82"/>
-  <text x="232" y="106" class="lbl" style="fill:#ededed">JavaScript</text>
-  <text x="386" y="106" class="sub" text-anchor="end">16.6%</text>
+  <text x="232" y="106" class="lbl" style="fill:#ededed">PHP</text>
+  <text x="386" y="106" class="sub" text-anchor="end">22.1%</text>
 </g>
 <g>
   <rect x="24" y="125" width="9" height="9" fill="#ff3800" fill-opacity="0.66"/>
-  <text x="42" y="134" class="lbl" style="fill:#ededed">PHP</text>
-  <text x="196" y="134" class="sub" text-anchor="end">12.1%</text>
+  <text x="42" y="134" class="lbl" style="fill:#ededed">Blade</text>
+  <text x="196" y="134" class="sub" text-anchor="end">3.5%</text>
 </g>
 <g>
   <rect x="214" y="125" width="9" height="9" fill="#ff3800" fill-opacity="0.52"/>
-  <text x="232" y="134" class="lbl" style="fill:#ededed">Python</text>
-  <text x="386" y="134" class="sub" text-anchor="end">8.8%</text>
+  <text x="232" y="134" class="lbl" style="fill:#ededed">JavaScript</text>
+  <text x="386" y="134" class="sub" text-anchor="end">3.0%</text>
 </g>
 <g>
   <rect x="24" y="153" width="9" height="9" fill="#ff3800" fill-opacity="0.4"/>
   <text x="42" y="162" class="lbl" style="fill:#ededed">CSS</text>
-  <text x="196" y="162" class="sub" text-anchor="end">6.6%</text>
+  <text x="196" y="162" class="sub" text-anchor="end">2.8%</text>
 </g>
 <g>
   <rect x="214" y="153" width="9" height="9" fill="#ff3800" fill-opacity="0.3"/>
-  <text x="232" y="162" class="lbl" style="fill:#ededed">Blade</text>
-  <text x="386" y="162" class="sub" text-anchor="end">3.3%</text>
+  <text x="232" y="162" class="lbl" style="fill:#ededed">HTML</text>
+  <text x="386" y="162" class="sub" text-anchor="end">2.1%</text>
 </g>
 <g>
   <rect x="24" y="181" width="9" height="9" fill="#ff3800" fill-opacity="0.22"/>
-  <text x="42" y="190" class="lbl" style="fill:#ededed">Dart</text>
-  <text x="196" y="190" class="sub" text-anchor="end">2.2%</text>
+  <text x="42" y="190" class="lbl" style="fill:#ededed">Liquid</text>
+  <text x="196" y="190" class="sub" text-anchor="end">0.7%</text>
 </g>
 <g>
   <rect x="214" y="181" width="9" height="9" fill="#ff3800" fill-opacity="0.16"/>
-  <text x="232" y="190" class="lbl" style="fill:#ededed">Shell</text>
-  <text x="386" y="190" class="sub" text-anchor="end">0.7%</text>
+  <text x="232" y="190" class="lbl" style="fill:#ededed">PowerShell</text>
+  <text x="386" y="190" class="sub" text-anchor="end">0.6%</text>
 </g>
 </svg>
