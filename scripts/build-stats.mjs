@@ -317,7 +317,7 @@ const ICONS = {
 };
 
 function buttonSvg(b) {
-  const label = b.label.toUpperCase() + (b.primary ? "  ↗" : "");
+  const label = (b.back ? "←  " : "") + b.label.toUpperCase() + (b.primary || b.arrow ? "  ↗" : "");
   const fg = b.primary ? T.bg : T.muted;
   const iconW = b.icon ? (b.icon === "logo" ? 26 : 16) + 10 : 0;
   const textW = charW(label, 11, 0.12);
@@ -341,14 +341,6 @@ function compose(w, h, label, parts) {
 <style>${FONT_FACE}</style>
 ${inner}
 </svg>`;
-}
-
-// Drops a card's 48px label bar (keeps the divider as its top border) so the
-// list can sit under a <details> summary.
-function cropHeader(str) {
-  const [, w, h] = str.match(/width="([\d.]+)" height="([\d.]+)"/);
-  const nh = +h - 47.5;
-  return str.replace(/width="[\d.]+" height="[\d.]+" viewBox="[^"]+"/, `width="${w}" height="${nh}" viewBox="0 47.5 ${w} ${nh}"`);
 }
 
 function labelBarSvg(title, right, W = 830) {
@@ -870,8 +862,9 @@ for (const theme of Object.keys(THEMES)) {
   const files = {
     "hero.svg": heroSvg(),
     "about.svg": aboutSvg(data.stats.commitsThisYear),
-    "more.svg": cropHeader(moreSvg()),
-    "more-summary.svg": buttonSvg({ label: `Also built · ${CONTENT.more.length} more projects`, icon: "plus" }),
+    "more.svg": moreSvg(),
+    "btn-more.svg": buttonSvg({ label: `Also built · ${CONTENT.more.length} more projects`, arrow: true }),
+    "btn-back.svg": buttonSvg({ label: "Back to profile", back: true }),
     "experience.svg": experienceSvg(),
     "capabilities.svg": await capabilitiesSvg(),
     "contact.svg": contactSvg(),
@@ -907,7 +900,7 @@ for (const theme of Object.keys(THEMES)) {
       [labelBarSvg("Selected work", `${String(CONTENT.work.length).padStart(2, "0")} PROJECTS`, MW), 0, 0],
       [mRows[0], 0, 39],
     ]),
-    "more-m.svg": cropHeader(listM("Also built", `${String(CONTENT.more.length).padStart(2, "0")} PROJECTS`, CONTENT.more)),
+    "more-m.svg": listM("Also built", `${String(CONTENT.more.length).padStart(2, "0")} PROJECTS`, CONTENT.more),
     "experience-m.svg": experienceM(),
     "capabilities-m.svg": await capabilitiesSvg(MW, 2, 52),
     "activity-m.svg": activityM(data),
