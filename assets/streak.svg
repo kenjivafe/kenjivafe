@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="164" viewBox="0 0 830 164" role="img" aria-label="Contributions">
+<style>
+  .t{font:500 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;letter-spacing:.12em;fill:#8a8a8a}
+  .n{fill:#ff3800}
+  .lbl{font:400 12px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#8a8a8a}
+  .val{font:600 14px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ededed}
+  .big{font:700 34px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#ededed;letter-spacing:-.02em}
+  .sub{font:400 11px 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;fill:#5a5a5a}
+</style>
+<rect x=".5" y=".5" width="829" height="163" fill="#0a0a0a" stroke="#1f1f1f"/>
+<text x="24" y="34" class="t"><tspan class="n">03</tspan>  CONTRIBUTIONS</text>
+
+<line x1="24" y1="48" x2="806" y2="48" stroke="#1f1f1f"/>
+
+<g>
+  <text x="24" y="78" class="lbl">Total contributions</text>
+  <text x="24" y="118" class="big" style="fill:#ededed">10,759</text>
+  <text x="24" y="140" class="sub">Dec 27, 2022 — Present</text>
+</g>
+<line x1="284.6666666666667" y1="64" x2="284.6666666666667" y2="140" stroke="#1f1f1f"/>
+<g>
+  <text x="308.6666666666667" y="78" class="lbl">Longest streak</text>
+  <text x="308.6666666666667" y="118" class="big" style="fill:#ff3800">15 days</text>
+  <text x="308.6666666666667" y="140" class="sub">May 1, 2024 — May 15, 2024</text>
+</g>
+<line x1="545.3333333333334" y1="64" x2="545.3333333333334" y2="140" stroke="#1f1f1f"/>
+<g>
+  <text x="569.3333333333334" y="78" class="lbl">Active days</text>
+  <text x="569.3333333333334" y="118" class="big" style="fill:#ededed">980</text>
+  <text x="569.3333333333334" y="140" class="sub">70% of days since joining</text>
+</g>
+</svg>
