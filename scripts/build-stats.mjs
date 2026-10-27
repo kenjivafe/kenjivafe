@@ -372,6 +372,13 @@ function openBottom(str) {
   return str.replace(/width="[\d.]+" height="[\d.]+" viewBox="0 0 [^"]+"/, `width="${w}" height="${+h - 1}" viewBox="0 0 ${w} ${+h - 1}"`);
 }
 
+// Adds transparent space under a card. The work block is floated, and some
+// GitHub renderers ignore the clearing <br>, so the gap lives in the image.
+function padBottom(str, px) {
+  const [, w, h] = str.match(/width="([\d.]+)" height="([\d.]+)"/);
+  return str.replace(/width="[\d.]+" height="[\d.]+" viewBox="0 0 [^"]+"/, `width="${w}" height="${+h + px}" viewBox="0 0 ${w} ${+h + px}"`);
+}
+
 function labelBarSvg(title, right, W = 830) {
   const pad = W < 600 ? 16 : 24;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="40" viewBox="0 0 ${W} 40" role="img" aria-label="${esc(title)}">
@@ -913,7 +920,7 @@ for (const theme of Object.keys(THEMES)) {
   const files = {
     "hero.svg": heroSvg(),
     "about.svg": aboutSvg(data.stats.commitsThisYear),
-    "more.svg": moreCompact(),
+    "more.svg": padBottom(moreCompact(), 40),
     "experience.svg": experienceSvg(),
     "capabilities.svg": await capabilitiesSvg(),
     "contact.svg": contactSvg(),
@@ -950,7 +957,7 @@ for (const theme of Object.keys(THEMES)) {
       [labelBarSvg("Selected work", `${String(CONTENT.work.length).padStart(2, "0")} PROJECTS`, MW), 0, 0],
       [mRows[0], 0, 39],
     ]),
-    "more-m.svg": moreCompact(MW),
+    "more-m.svg": padBottom(moreCompact(MW), 28),
     "experience-m.svg": experienceM(),
     "capabilities-m.svg": await capabilitiesSvg(MW, 2, 52),
     "activity-m.svg": activityM(data),

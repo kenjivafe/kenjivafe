@@ -46,7 +46,6 @@ out = [
         link("https://kenjivafe.vercel.app/#work", pic("more", "Also built: Tenantra, Airtime, Perbee, SPUP AdServIS, Doctor Smile, DICT Geofence, Apit Lako", align="left")),
         '<br clear="all" />',
     ),
-    gap,
     blk(pic("experience", "Experience")),
     gap,
     blk(pic("capabilities", "Capabilities")),
