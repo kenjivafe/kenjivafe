@@ -21,6 +21,16 @@ jobs:
         with:
           node-version: 22
 
+      - name: Get Satoshi
+        continue-on-error: true
+        run: |
+          curl -fsSL https://api.fontshare.com/v2/fonts/download/satoshi -o /tmp/satoshi.zip
+          unzip -qo /tmp/satoshi.zip -d /tmp/satoshi
+          FONT=$(find /tmp/satoshi -iname 'Satoshi-Variable.woff2' | head -1)
+          [ -z "$FONT" ] && FONT=$(find /tmp/satoshi -iname 'Satoshi-Variable.ttf' | head -1)
+          echo "Using $FONT"
+          echo "FONT_FILE=$FONT" >> "$GITHUB_ENV"
+
       - name: Build cards
         run: node scripts/build-stats.mjs
         env:

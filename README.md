@@ -1,14 +1,6 @@
 <!-- Header -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0a0a0a&height=140&section=header&text=Kenji.&fontSize=72&fontColor=ff3800&fontAlign=50&fontAlignY=55" alt="Kenji." />
-</p>
-
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=16&duration=2800&pause=1400&color=A1A1A1&center=true&vCenter=true&width=600&lines=Software+Engineer+%26+Builder;Kalinga%2C+Philippines;Creating+with+code.+Small+details+matter." alt="Software Engineer & Builder" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/STATUS-AVAILABLE-ff3800?style=flat-square&labelColor=0a0a0a" alt="Available" />
+  <img src="./assets/hero.svg" width="100%" alt="Kenji." />
 </p>
 
 <p align="center">
@@ -17,9 +9,9 @@
 </p>
 
 <p align="center">
-  <a href="https://kenjivafe.vercel.app"><img src="https://img.shields.io/badge/Portfolio-0a0a0a?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4NDUuNDIgNTI3LjEyIj48cG9seWdvbiBmaWxsPSIjMTAxMDBFIiBwb2ludHM9IjYyOS4zNyA1MjcuMTIgNTQ5LjQ0IDM4Ni42NSA1MjcuNzMgNDE1IDUyNy43MyA1MjcuMTIgMCA1MjcuMTIgMCAwIDUyNy43MyAwIDUyNy43MyAxMzQuMjQgNjI5LjExIDAgODQ1LjQyIDAgNjY2LjA0IDIzNC4zIDgzNC45MyA1MjcuMTIgNjI5LjM3IDUyNy4xMiIvPjxwb2x5Z29uIGZpbGw9IiNGRkZGRTMiIHBvaW50cz0iNzY1LjY4IDQ4Ny4xMiA2NTIuNjMgNDg3LjEyIDU1NC4zNiAzMTQuNDIgNDg3LjczIDQwMS40NCA0ODcuNzMgNDg3LjEyIDQwIDQ4Ny4xMiA0MCA0MCA0ODcuNzMgNDAgNDg3LjczIDI1My41NyA2NDkuMDMgNDAgNzY0LjQyIDQwIDYxOC4wNiAyMzEuMTcgNzY1LjY4IDQ4Ny4xMiIvPjxjaXJjbGUgZmlsbD0iI0ZGMzgwMCIgY3g9IjI2My41NyIgY3k9IjI2My41NiIgcj0iMTU2LjU3Ii8%2BPC9zdmc%2BCg%3D%3D" alt="Portfolio" /></a>
-  <a href="https://linkedin.com/in/kenji-von-ashley"><img src="https://img.shields.io/badge/LinkedIn-0a0a0a?style=for-the-badge&logo=linkedin&logoColor=ff3800" alt="LinkedIn" /></a>
-  <a href="mailto:kenjivafe@gmail.com"><img src="https://img.shields.io/badge/Email-0a0a0a?style=for-the-badge&logo=gmail&logoColor=ff3800" alt="Email" /></a>
+  <a href="https://kenjivafe.vercel.app"><img src="https://img.shields.io/badge/Portfolio-10100e?style=for-the-badge&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4NDUuNDIgNTI3LjEyIj48cG9seWdvbiBmaWxsPSIjMTAxMDBFIiBwb2ludHM9IjYyOS4zNyA1MjcuMTIgNTQ5LjQ0IDM4Ni42NSA1MjcuNzMgNDE1IDUyNy43MyA1MjcuMTIgMCA1MjcuMTIgMCAwIDUyNy43MyAwIDUyNy43MyAxMzQuMjQgNjI5LjExIDAgODQ1LjQyIDAgNjY2LjA0IDIzNC4zIDgzNC45MyA1MjcuMTIgNjI5LjM3IDUyNy4xMiIvPjxwb2x5Z29uIGZpbGw9IiNGRkZGRTMiIHBvaW50cz0iNzY1LjY4IDQ4Ny4xMiA2NTIuNjMgNDg3LjEyIDU1NC4zNiAzMTQuNDIgNDg3LjczIDQwMS40NCA0ODcuNzMgNDg3LjEyIDQwIDQ4Ny4xMiA0MCA0MCA0ODcuNzMgNDAgNDg3LjczIDI1My41NyA2NDkuMDMgNDAgNzY0LjQyIDQwIDYxOC4wNiAyMzEuMTcgNzY1LjY4IDQ4Ny4xMiIvPjxjaXJjbGUgZmlsbD0iI0ZGMzgwMCIgY3g9IjI2My41NyIgY3k9IjI2My41NiIgcj0iMTU2LjU3Ii8%2BPC9zdmc%2BCg%3D%3D" alt="Portfolio" /></a>
+  <a href="https://linkedin.com/in/kenji-von-ashley"><img src="https://img.shields.io/badge/LinkedIn-10100e?style=for-the-badge&logo=linkedin&logoColor=ff3800" alt="LinkedIn" /></a>
+  <a href="mailto:kenjivafe@gmail.com"><img src="https://img.shields.io/badge/Email-10100e?style=for-the-badge&logo=gmail&logoColor=ff3800" alt="Email" /></a>
 </p>
 
 <br />
@@ -133,5 +125,5 @@ Open to freelance projects, full-time roles, and interesting collaborations. If 
 
 <!-- Footer -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&color=0a0a0a&height=110&section=footer&text=KENJI%20VON%20ASHLEY&fontSize=44&fontColor=ff3800&fontAlign=50&fontAlignY=50" alt="Kenji Von Ashley" />
+  <img src="./assets/footer.svg" width="100%" alt="Kenji Von Ashley" />
 </p>

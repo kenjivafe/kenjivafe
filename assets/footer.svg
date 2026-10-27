@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="140" viewBox="0 0 830 140" role="img" aria-label="Kenji Von Ashley">
+<style>
+  .f{font:900 80px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;letter-spacing:-.06em;fill:none;stroke-width:1.5}
+</style>
+<defs>
+  <radialGradient id="g" cx="50%" cy="50%" r="45%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  <mask id="m"><rect width="830" height="140" fill="url(#g)"/></mask>
+</defs>
+<rect width="830" height="140" fill="#10100e"/>
+<text x="415" y="96" text-anchor="middle" textLength="782" lengthAdjust="spacingAndGlyphs" class="f" stroke="#30302b">KENJI VON ASHLEY</text>
+<g mask="url(#m)"><text x="415" y="96" text-anchor="middle" textLength="782" lengthAdjust="spacingAndGlyphs" class="f" stroke="#ff3800" style="fill:#ff3800;fill-opacity:.9">KENJI VON ASHLEY</text></g>
+</svg>

@@ -4,7 +4,7 @@
 //   GH_TOKEN=xxx USERNAME=kenjivafe node scripts/build-stats.mjs
 //   node scripts/build-stats.mjs --mock      (render with sample data, no API)
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const USERNAME = process.env.USERNAME || "kenjivafe";
 const TOKEN = process.env.GH_TOKEN;
@@ -13,17 +13,35 @@ const MOCK = process.argv.includes("--mock");
 
 /* ------------------------------------------------------------------ theme */
 
+// Matches the portfolio's dark theme (kenjivafe.vercel.app)
 const T = {
-  bg: "#0a0a0a",
-  line: "#1f1f1f",
-  empty: "#161616",
-  text: "#ededed",
-  muted: "#8a8a8a",
-  dim: "#5a5a5a",
+  bg: "#10100e",
+  line: "#30302b",
+  empty: "#22221e",
+  text: "#ffffe3",
+  muted: "#c0c0ab",
+  dim: "#8a8a7a",
   accent: "#ff3800",
+  green: "#22c55e",
   sans: "Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif",
   mono: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
 };
+
+// Satoshi is embedded into every SVG when FONT_FILE points at a font file
+// (the workflow downloads it from Fontshare), so the cards render in the
+// same typeface as the portfolio without loading anything external.
+let FONT_FACE = "";
+if (process.env.FONT_FILE) {
+  try {
+    const f = process.env.FONT_FILE;
+    const ext = f.split(".").pop().toLowerCase();
+    const fmtName = { woff2: "woff2", woff: "woff", ttf: "truetype", otf: "opentype" }[ext];
+    const b64 = (await readFile(f)).toString("base64");
+    FONT_FACE = `@font-face{font-family:Satoshi;src:url(data:font/${ext};base64,${b64}) format('${fmtName}');font-weight:300 900}`;
+  } catch (e) {
+    console.warn("Could not embed font:", e.message);
+  }
+}
 
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -33,12 +51,12 @@ const fmtDate = (d) =>
 
 function frame(w, h, num, title, body, right = "") {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(title)}">
-<style>
-  .t{font:500 11px ${T.mono};letter-spacing:.12em;fill:${T.muted}}
+<style>${FONT_FACE}
+  .t{font:700 10px ${T.sans};letter-spacing:.14em;fill:${T.muted}}
   .n{fill:${T.accent}}
-  .lbl{font:400 12px ${T.mono};fill:${T.muted}}
-  .val{font:600 14px ${T.sans};fill:${T.text}}
-  .big{font:700 34px ${T.sans};fill:${T.text};letter-spacing:-.02em}
+  .lbl{font:500 13px ${T.sans};fill:${T.muted}}
+  .val{font:700 15px ${T.sans};fill:${T.text};letter-spacing:-.01em}
+  .big{font:900 40px ${T.sans};fill:${T.text};letter-spacing:-.05em}
   .sub{font:400 11px ${T.mono};fill:${T.dim}}
 </style>
 <rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" fill="${T.bg}" stroke="${T.line}"/>
@@ -98,7 +116,7 @@ function statsCard(s) {
   <circle r="${R}" fill="none" stroke="${T.empty}" stroke-width="6"/>
   <circle r="${R}" fill="none" stroke="${T.accent}" stroke-width="6" stroke-linecap="butt"
     stroke-dasharray="${C}" stroke-dashoffset="${C - filled}" transform="rotate(-90)"/>
-  <text y="10" text-anchor="middle" style="font:700 30px ${T.sans};fill:${T.text};letter-spacing:-.02em">${r.level}</text>
+  <text y="10" text-anchor="middle" style="font:900 32px ${T.sans};fill:${T.text};letter-spacing:-.04em">${r.level}</text>
 </g>
 <text x="339" y="198" class="sub" text-anchor="middle">TOP ${r.percentile < 1 ? r.percentile.toFixed(1) : Math.round(r.percentile)}%</text>`;
   return frame(410, 220, "01", "GitHub stats", body);
@@ -156,7 +174,7 @@ function streakCard(st) {
 function heatmapCard(weeks, total) {
   const gap = 3, x0 = 24, y0 = 84;
   const step = (830 - 48 + gap) / weeks.length, cell = +(step - gap).toFixed(2);
-  const op = { NONE: 0, FIRST_QUARTILE: 0.3, SECOND_QUARTILE: 0.55, THIRD_QUARTILE: 0.8, FOURTH_QUARTILE: 1 };
+  const op = { NONE: 0, FIRST_QUARTILE: 0.18, SECOND_QUARTILE: 0.38, THIRD_QUARTILE: 0.6, FOURTH_QUARTILE: 1 };
   const months = [];
   let lastM = -1, lastW = -9;
   const cells = weeks
@@ -179,7 +197,7 @@ function heatmapCard(weeks, total) {
     )
     .join("\n");
   const ly = Math.round(y0 + 7 * step + 14);
-  const legend = [0, 0.3, 0.55, 0.8, 1]
+  const legend = [0, 0.18, 0.38, 0.6, 1]
     .map((o, i) => `<rect x="${830 - 24 - 34 - (5 - i) * 15}" y="${ly - 10}" width="12" height="12" ${o ? `fill="${T.accent}" fill-opacity="${o}"` : `fill="${T.empty}"`}/>`)
     .join("");
   const body = `${months.join("\n")}
@@ -188,6 +206,44 @@ function heatmapCard(weeks, total) {
 <text x="${830 - 24 - 34 - 5 * 15 - 8}" y="${ly}" class="sub" text-anchor="end">LESS</text>${legend}
 <text x="${830 - 24}" y="${ly}" class="sub" text-anchor="end">MORE</text>`;
   return frame(830, ly + 22, "04", "Last 12 months", body, `@${esc(USERNAME)}`);
+}
+
+/* ------------------------------------------------------------------ hero + footer */
+
+function heroSvg() {
+  const W = 830, H = 230;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Kenji.">
+<style>${FONT_FACE}
+  .e{font:700 10px ${T.sans};letter-spacing:.14em;fill:${T.muted}}
+  .name{font:900 150px ${T.sans};letter-spacing:-.05em;fill:${T.text}}
+</style>
+<defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="${T.line}"/></pattern></defs>
+<rect width="${W}" height="${H}" fill="${T.bg}"/>
+<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" fill="none" stroke="${T.line}"/>
+<text x="24" y="27" class="e">SOFTWARE ENGINEER &amp; BUILDER</text>
+<circle cx="${W - 24 - 76}" cy="23.5" r="3" fill="${T.green}"/>
+<text x="${W - 24}" y="27" class="e" text-anchor="end">AVAILABLE</text>
+<line x1="0" y1="44" x2="${W}" y2="44" stroke="${T.line}"/>
+<rect x="1" y="45" width="${W - 2}" height="${H - 46}" fill="url(#dots)"/>
+<text x="28" y="182" class="name">Kenji<tspan fill="${T.accent}">.</tspan></text>
+</svg>`;
+}
+
+function footerSvg() {
+  const W = 830, H = 140, text = "KENJI VON ASHLEY";
+  const t = (attrs) => `<text x="${W / 2}" y="${H / 2 + 26}" text-anchor="middle" textLength="${W - 48}" lengthAdjust="spacingAndGlyphs" class="f" ${attrs}>${text}</text>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Kenji Von Ashley">
+<style>${FONT_FACE}
+  .f{font:900 80px ${T.sans};letter-spacing:-.06em;fill:none;stroke-width:1.5}
+</style>
+<defs>
+  <radialGradient id="g" cx="50%" cy="50%" r="45%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  <mask id="m"><rect width="${W}" height="${H}" fill="url(#g)"/></mask>
+</defs>
+<rect width="${W}" height="${H}" fill="${T.bg}"/>
+${t(`stroke="${T.line}"`)}
+<g mask="url(#m)">${t(`stroke="${T.accent}" style="fill:${T.accent};fill-opacity:.9"`)}</g>
+</svg>`;
 }
 
 /* ------------------------------------------------------------------ data */
@@ -337,9 +393,11 @@ if (!MOCK && !TOKEN) {
 const data = MOCK ? mockData() : await fetchAll();
 await mkdir(OUT, { recursive: true });
 await Promise.all([
+  writeFile(new URL("hero.svg", OUT), heroSvg()),
+  writeFile(new URL("footer.svg", OUT), footerSvg()),
   writeFile(new URL("stats.svg", OUT), statsCard(data.stats)),
   writeFile(new URL("languages.svg", OUT), langsCard(data.langs)),
   writeFile(new URL("streak.svg", OUT), streakCard(streaks(data.days))),
   writeFile(new URL("heatmap.svg", OUT), heatmapCard(data.heat.weeks, data.heat.total)),
 ]);
-console.log("Wrote assets/stats.svg, languages.svg, streak.svg, heatmap.svg", MOCK ? "(mock data)" : "");
+console.log("Wrote hero, footer, stats, languages, streak, heatmap" + (FONT_FACE ? " with Satoshi" : " (system fonts)"), MOCK ? "(mock data)" : "");
