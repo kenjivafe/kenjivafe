@@ -13,11 +13,12 @@ const MOCK = process.argv.includes("--mock");
 
 /* ------------------------------------------------------------------ theme */
 
+// Cards have transparent backgrounds so they sit on GitHub's own page color.
 // Matches the portfolio's two themes (kenjivafe.vercel.app). Every card is
 // rendered once per theme; the README swaps them with <picture>.
 const THEMES = {
   dark: { bg: "#10100e", line: "#30302b", empty: "#22221e", text: "#ffffe3", muted: "#c0c0ab", dim: "#8a8a7a" },
-  light: { bg: "#ffffe3", line: "#e8e8cf", empty: "#ececd2", text: "#10100e", muted: "#606055", dim: "#8a8a7a" },
+  light: { bg: "#ffffe3", line: "#e0dfca", empty: "#ecebd8", text: "#10100e", muted: "#606055", dim: "#8a8a7a" },
 };
 const T = {
   ...THEMES.dark,
@@ -60,7 +61,7 @@ const STYLE = () => `${FONT_FACE}
 function svg(w, h, label, inner, extraStyle = "") {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(label)}">
 <style>${STYLE()}${extraStyle}</style>
-<rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" fill="${T.bg}" stroke="${T.line}"/>
+<rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" fill="none" stroke="${T.line}"/>
 ${inner}
 </svg>`;
 }
@@ -347,7 +348,7 @@ function buttonSvg(b) {
   const icon = b.icon ? `<g transform="translate(22 12)">${ICONS[b.icon](fg)}</g>` : "";
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(b.label)}">
 <style>${FONT_FACE}.b{font:700 11px ${T.sans};letter-spacing:.12em;fill:${fg}}</style>
-<rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" fill="${b.primary ? T.text : T.bg}" stroke="${b.primary ? T.text : T.line}"/>
+<rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" fill="${b.primary ? T.text : "none"}" stroke="${b.primary ? T.text : T.line}"/>
 ${icon}
 <text x="${22 + iconW}" y="24.5" class="b">${esc(label)}</text>
 </svg>`;
@@ -383,7 +384,7 @@ function labelBarSvg(title, right, W = 830) {
   const pad = W < 600 ? 16 : 24;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="40" viewBox="0 0 ${W} 40" role="img" aria-label="${esc(title)}">
 <style>${STYLE()}</style>
-<rect x=".5" y=".5" width="${W - 1}" height="39" fill="${T.bg}" stroke="${T.line}"/>
+<rect x=".5" y=".5" width="${W - 1}" height="39" fill="none" stroke="${T.line}"/>
 <text x="${pad}" y="25" class="t">${esc(title.toUpperCase())}</text>
 <text x="${W - pad}" y="25" class="tc" text-anchor="end">${esc(right)}</text>
 </svg>`;
@@ -549,7 +550,7 @@ function heroM() {
   .name{font:900 104px ${T.sans};letter-spacing:-.05em;fill:${T.text}}
 </style>
 <defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="${T.line}"/></pattern></defs>
-<rect x=".5" y=".5" width="${MW - 1}" height="${H - 1}" fill="${T.bg}" stroke="${T.line}"/>
+<rect x=".5" y=".5" width="${MW - 1}" height="${H - 1}" fill="none" stroke="${T.line}"/>
 <text x="16" y="24" class="e">SOFTWARE ENGINEER &amp; BUILDER</text>
 <circle cx="${MW - 16 - 70}" cy="20.8" r="2.8" fill="${T.green}"/>
 <text x="${MW - 16}" y="24" class="e" text-anchor="end">AVAILABLE</text>
@@ -736,7 +737,7 @@ function heroSvg() {
   .name{font:900 150px ${T.sans};letter-spacing:-.05em;fill:${T.text}}
 </style>
 <defs><pattern id="dots" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="1" fill="${T.line}"/></pattern></defs>
-<rect width="${W}" height="${H}" fill="${T.bg}"/>
+
 <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" fill="none" stroke="${T.line}"/>
 <text x="24" y="27" class="e">SOFTWARE ENGINEER &amp; BUILDER</text>
 <circle cx="${W - 24 - 76}" cy="23.5" r="3" fill="${T.green}"/>
@@ -758,7 +759,7 @@ function footerSvg(W = 830, H = 140) {
   <radialGradient id="g" cx="50%" cy="50%" r="45%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
   <mask id="m"><rect width="${W}" height="${H}" fill="url(#g)"/></mask>
 </defs>
-<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" fill="${T.bg}" stroke="${T.line}"/>
+<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" fill="none" stroke="${T.line}"/>
 ${t(`fill="${T.empty}"`)}
 <g mask="url(#m)">${t(`fill="${T.accent}"`)}</g>
 </svg>`;
