@@ -38,7 +38,7 @@
 <br />
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/activity-m-light.svg?v=47614b88" /><source media="(prefers-color-scheme: light)" srcset="./assets/activity-light.svg?v=b0e1e462" /><source media="(max-width: 600px)" srcset="./assets/activity-m-dark.svg?v=88ceb8a7" /><img src="./assets/activity-dark.svg?v=5e1ed2df" width="100%" alt="GitHub activity" /></picture>
+  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/activity-m-light.svg?v=c6dea625" /><source media="(prefers-color-scheme: light)" srcset="./assets/activity-light.svg?v=7bd37f6e" /><source media="(max-width: 600px)" srcset="./assets/activity-m-dark.svg?v=fc7ea9df" /><img src="./assets/activity-dark.svg?v=f324a10f" width="100%" alt="GitHub activity" /></picture>
 </p>
 
 <br />
