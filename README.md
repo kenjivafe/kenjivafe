@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/about-m-light.svg?v=fffdc79a" /><source media="(prefers-color-scheme: light)" srcset="./assets/about-light.svg?v=04584c88" /><source media="(max-width: 600px)" srcset="./assets/about-m-dark.svg?v=e663845a" /><img src="./assets/about-dark.svg?v=2d09ff9b" width="100%" alt="I build precise, thoughtful digital products — from scalable backend architectures to fluid user interfaces." /></picture>
+  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/about-m-light.svg?v=202dee29" /><source media="(prefers-color-scheme: light)" srcset="./assets/about-light.svg?v=3e353f74" /><source media="(max-width: 600px)" srcset="./assets/about-m-dark.svg?v=19f31fba" /><img src="./assets/about-dark.svg?v=991c2b9f" width="100%" alt="I build precise, thoughtful digital products — from scalable backend architectures to fluid user interfaces." /></picture>
 </p>
 
 <p align="left">
@@ -38,7 +38,7 @@
 <br />
 
 <p align="center">
-  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/activity-m-light.svg?v=8f7666aa" /><source media="(prefers-color-scheme: light)" srcset="./assets/activity-light.svg?v=cf7577bf" /><source media="(max-width: 600px)" srcset="./assets/activity-m-dark.svg?v=4a609e79" /><img src="./assets/activity-dark.svg?v=ecd68b81" width="100%" alt="GitHub activity" /></picture>
+  <picture><source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset="./assets/activity-m-light.svg?v=bfcc7399" /><source media="(prefers-color-scheme: light)" srcset="./assets/activity-light.svg?v=80d9610a" /><source media="(max-width: 600px)" srcset="./assets/activity-m-dark.svg?v=69486639" /><img src="./assets/activity-dark.svg?v=5311ea90" width="100%" alt="GitHub activity" /></picture>
 </p>
 
 <br />
