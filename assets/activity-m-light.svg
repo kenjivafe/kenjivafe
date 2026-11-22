@@ -32,10 +32,10 @@
 <line x1="274" y1="64" x2="274" y2="192" stroke="#e0dfca"/>
 <g transform="translate(332 118)">
   <circle r="34" fill="none" stroke="#ecebd8" stroke-width="5"/>
-  <circle r="34" fill="none" stroke="#ff3800" stroke-width="5" stroke-dasharray="213.62830044410595" stroke-dashoffset="69.17824295091583" transform="rotate(-90)"/>
+  <circle r="34" fill="none" stroke="#ff3800" stroke-width="5" stroke-dasharray="213.62830044410595" stroke-dashoffset="69.45212538738261" transform="rotate(-90)"/>
   <text y="9" text-anchor="middle" style="font:900 26px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.04em">A-</text>
 </g>
-<text x="332" y="186" class="sub" text-anchor="middle">TOP 32%</text>
+<text x="332" y="186" class="sub" text-anchor="middle">TOP 33%</text>
 </svg>
 <svg x="0" y="246" xmlns="http://www.w3.org/2000/svg" width="390" height="166" viewBox="0 0 390 166" role="img" aria-label="Top languages">
 <style>

@@ -48,10 +48,10 @@
 <g transform="translate(339 124)">
   <circle r="46" fill="none" stroke="#ecebd8" stroke-width="6"/>
   <circle r="46" fill="none" stroke="#ff3800" stroke-width="6" stroke-linecap="butt"
-    stroke-dasharray="289.02652413026095" stroke-dashoffset="93.59409340418023" transform="rotate(-90)"/>
+    stroke-dasharray="289.02652413026095" stroke-dashoffset="93.96464022998822" transform="rotate(-90)"/>
   <text y="10" text-anchor="middle" style="font:900 32px Satoshi, Inter, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#10100e;letter-spacing:-.04em">A-</text>
 </g>
-<text x="339" y="198" class="sub" text-anchor="middle">TOP 32%</text>
+<text x="339" y="198" class="sub" text-anchor="middle">TOP 33%</text>
 </svg>
 <svg x="414" y="39" xmlns="http://www.w3.org/2000/svg" width="416" height="220" viewBox="0 0 416 220" role="img" aria-label="Top languages">
 <style>
